@@ -1,0 +1,27 @@
+{
+  "name": "pw_database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git clone https://github.com/ndongaloris/cse341-team13.git"
+  },
+  "author": "Loris Jared Ndonga, Fortunate Kwenda, Samuel Turay, Gilles Mambou",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.4"
+  }
+}

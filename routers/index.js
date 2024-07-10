@@ -1,9 +1,9 @@
 const router = require("express").Router();
-const institutions = require("./institution")
+const institution = require("./institution")
 const degree = require("./degree")
 
 router.use("/degree", degree);
-router.use("/institution", institutions);
+router.use("/institution", institution);
 
 router.get("/", (req, res) =>{
     res.send("So far good");

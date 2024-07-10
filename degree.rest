@@ -1,0 +1,53 @@
+# Localhost
+
+# DEGREE #
+
+# GET ALL
+GET http://localhost:8080/degree
+
+###
+# GET BY ID
+GET http://localhost:8080/degree/668d9175ce4a46894dc86f46
+
+###
+
+#Update by ID
+PUT http://localhost:8080/degree/update/668d9175ce4a46894dc86f48 HTTP/1.1
+Content-Type: application/json
+
+{
+    "Potential Employment": "Software Developer"
+}
+
+###
+# Delete BY ID
+DELETE  http://localhost:8080/degree/delete/668d35ad3911a672d32e22ea
+
+
+# INSTITUTION #
+
+###
+# GET ALL
+GET http://localhost:8080/institution
+
+###
+
+# GET BY ID
+GET http://localhost:8080/institution/668e8721fc87859b5a89402c
+
+###
+
+#Update by ID
+PUT http://localhost:8080/institution/update/668e8721fc87859b5a89402c HTTP/1.1
+Content-Type: application/json
+
+{
+    "Name": "Brigham Young University - Idaho"
+}
+
+###
+
+# Delete BY ID
+DELETE  http://localhost:8080/institution/delete/668e87d5fc87859b5a89402e
+
+###

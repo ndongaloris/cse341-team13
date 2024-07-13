@@ -27,6 +27,7 @@
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.4",
     "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "validator": "^13.12.0"
   }
 }

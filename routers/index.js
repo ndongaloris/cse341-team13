@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const institutionRouter = require("./institution");
 const degreeRouter = require("./degree");
+const swagger = require("./swagger");
+
+// Mounting swagger routes under /api-docs endpoint
+router.use("/", swagger);
 
 // Mounting degree routes under /degree endpoint
 router.use("/degree", degreeRouter);

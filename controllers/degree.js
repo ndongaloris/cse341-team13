@@ -1,39 +1,43 @@
-const objectID = require("mongodb").ObjectId;
 const databaseModel = require("../models/index").degree;
 
-const getAll = (req, res) =>{
-    databaseModel.find().then((data) =>{
-        res.status(200).send(data);
-    }).catch((err) =>{
-        console.log("something is wrong with the getAll", err);
-    })
-    
+const getAll = async (req, res) =>{
+    try{
+        const result = await databaseModel.find()
+        res.status(200).send(data)
+    }
+    catch{
+        console.log("something is wrong with the getAll")
+    }
 }
-const getSingle = (req, res) =>{
-    const degreeId = new objectID(req.params.id);
-    databaseModel.findOne({ _id : degreeId }).then((data) => {
-        res.status(200).send(data);
-    }).catch((err) =>{
-        console.log("something is wrong with the getSingle", err);
-    })
-}
-
-const createDegree = (req, res) =>{
-    databaseModel.save({
-        Name: req.body.Name,
-        Institution: req.body.Institution,
-        Type: req.body.Type,
-        Description: req.body.Description,
-        PotentialEmployment: req.body.PotentialEmployment
-    }).then((data) => {
-        res.status(200).send(data);
-    }).catch((err) =>{
-        console.log("something is wrong with the createDegree", err);
-    })
+const getSingle = async (req, res) =>{
+    const degreeId = req.params.id;
+    try{
+        const result = await databaseModel.findOne({ _id : degreeId })
+        res.status(200).send(data)
+    }
+    catch{
+        console.log("something is wrong with the getSingle")
+    }
 }
 
-const updateDegree = (req, res) => {
-    const degreeId = new objectID(req.params.id);
+const createDegree = async (req, res) =>{
+    try{
+        const result = databaseModel.save({
+            Name: req.body.Name,
+            Institution: req.body.Institution,
+            Type: req.body.Type,
+            Description: req.body.Description,
+            PotentialEmployment: req.body.PotentialEmployment
+        })
+        res.status(200).send(data)
+    }
+    catch{
+        console.log("something is wrong with the createDegree")
+    }
+}
+
+const updateDegree = async (req, res) => {
+    const degreeId = req.params.id;
     
     const newDoc = {};
     if (req.body.Name !== undefined) newDoc.Name = req.body.Name;
@@ -42,20 +46,24 @@ const updateDegree = (req, res) => {
     if (req.body.Description !== undefined) newDoc.Description = req.body.Description;
     if (req.body.PotentialEmployment !== undefined) newDoc.PotentialEmployment = req.body.PotentialEmployment;
 
-    databaseModel.updateOne({_id: degreeId}, {$set: newDoc}).then((data) =>{
-        res.status(200).send(data);
-    }).catch((err) =>{
-        console.log("something is wrong with the updateDegree", err)
-    })
+    try{
+        const result = await databaseModel.updateOne({_id: degreeId}, {$set: newDoc})
+        res.status(200).send(data)
+    }
+    catch{
+        console.log("something is wrong with the updateDegree",)
+    }
 }
 
-const deleteDegree = (req, res) => {
-    const degreeId = new objectID(req.params.id);
-    databaseModel.deleteOne({ _id : degreeId }).then((data) =>{
+const deleteDegree = async (req, res) => {
+    try{
+        const degreeId = req.params.id;
+        const result = await databaseModel.deleteOne({ _id : degreeId })
         res.status(200).send(data)
-    }).catch((err) =>{
-        console.log("something is wrong with the deleteDegree", err)
-    })
+    }
+    catch{
+        console.log("something is wrong with the deleteDegree")
+    }
 }
 
 module.exports = {

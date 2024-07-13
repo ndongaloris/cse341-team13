@@ -1,12 +1,16 @@
 const router = require("express").Router();
-const institution = require("./institution")
-const degree = require("./degree")
+const institutionRouter = require("./institution");
+const degreeRouter = require("./degree");
 
-router.use("/degree", degree);
-router.use("/institution", institution);
+// Mounting degree routes under /degree endpoint
+router.use("/degree", degreeRouter);
 
-router.get("/", (req, res) =>{
-    res.send("So far good");
-})
+// Mounting institution routes under /institution endpoint
+router.use("/institution", institutionRouter);
+
+// Default route handler for the root endpoint
+router.get("/", (req, res) => {
+    res.send("So far so good");
+});
 
 module.exports = router;

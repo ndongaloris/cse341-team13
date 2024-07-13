@@ -1,13 +1,13 @@
 module.exports = (mongoose) => {
     const Degree = mongoose.model(
-        "degrees", 
+        "degrees", // Model name should be singular and capitalized
         mongoose.Schema({
-            Name: String,
-            Institution: String,
-            Type: String,
-            Description : String,
-            PotentialEmployment: String,
+            name: { type: String },
+            institution: { type: String },
+            type: { type: String },
+            description: { type: String },
+            potentialEmployment: { type: String },
         })
     );
     return Degree;
-}
+};

@@ -1,14 +1,19 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-const degree = require("./degree");
-const institution = require("./institution");
-
 mongoose.Promise = global.Promise;
+
 const db = {};
 
-db.Uri = process.env.DB_URL; 
+// Importing models
+const degreeModel = require("./degree");
+const institutionModel = require("./institution");
+
+// Database connection URI
+db.Uri = process.env.DB_URL;
 db.mongoose = mongoose;
-db.degree = degree(mongoose);
-db.institution = institution(mongoose);
+
+// Assigning models to db object
+db.degree = degreeModel(mongoose);
+db.institution = institutionModel(mongoose);
 
 module.exports = db;

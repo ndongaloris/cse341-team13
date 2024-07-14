@@ -1,7 +1,10 @@
 /**
- * * This class is used to create custom error objects.
+/**
+ * * @file appErrorClass.js
+ * * @description This class is used to create custom error objects.
  * * It extends the built-in Error class to add additional properties.
  * * like status code, error message, etc.
+ * * @author Samuel Turay
  *
  * * @extends {Error}
  */

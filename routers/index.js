@@ -9,10 +9,10 @@ const AppErrorClass = require("../utils/appErrorClass");
 router.use("/", swagger);
 
 // Mounting degree routes under /degree endpoint
-router.use("/degree", degreeRouter);
+router.use("/degrees", degreeRouter);
 
 // Mounting institution routes under /institution endpoint
-router.use("/institution", institutionRouter);
+router.use("/institutions", institutionRouter);
 
 // Default route handler for the root endpoint
 router.get("/", (req, res) => {

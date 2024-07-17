@@ -85,7 +85,7 @@ module.exports = (mongoose) => {
    * Institution model creation.
    * @model Institution
    */
-  const Institution = mongoose.model("institutions", InstitutionSchema); // Model name should be singular and capitalized
+  const Institution = mongoose.model("Institutions", InstitutionSchema); // Model name should be singular and capitalized
 
   return Institution;
 };

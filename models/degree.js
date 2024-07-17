@@ -57,7 +57,7 @@ module.exports = (mongoose) => {
   /**
    * Defines the Degree model.
    */
-  const Degree = mongoose.model("Degree", DegreeSchema);
+  const Degree = mongoose.model("Degrees", DegreeSchema);
 
   return Degree;
 };

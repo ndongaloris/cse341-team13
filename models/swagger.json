@@ -70,6 +70,7 @@
       }
     },
     "/degrees/{id}": {
+    "/degrees/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -83,20 +84,24 @@
         "responses": {
           "default": {
             "description": ""
-          }
-        }
-      }
-    },
-    "/degrees/create": {
-      "post": {
-        "description": "",
-        "responses": {
           "default": {
             "description": ""
           }
         }
       }
     },
+    "/degrees/create": {
+    "/degrees/create": {
+      "post": {
+        "description": "",
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/degrees/update/{id}": {
     "/degrees/update/{id}": {
       "put": {
         "description": "",
@@ -109,12 +114,13 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
+    "/degrees/delete/{id}": {
     "/degrees/delete/{id}": {
       "delete": {
         "description": "",
@@ -127,22 +133,26 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
     },
+    "/institutions/": {
     "/institutions/": {
       "get": {
         "description": "",
         "responses": {
           "default": {
             "description": ""
+          "default": {
+            "description": ""
           }
         }
       }
     },
+    "/institutions/{id}": {
     "/institutions/{id}": {
       "get": {
         "description": "",
@@ -157,10 +167,13 @@
         "responses": {
           "default": {
             "description": ""
+          "default": {
+            "description": ""
           }
         }
       }
     },
+    "/institutions/create": {
     "/institutions/create": {
       "post": {
         "description": "",

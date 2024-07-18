@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const degreeController = require("../controllers/degree");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 /**
  * Route to get all degrees.
@@ -22,7 +23,7 @@ router.get("/:id", degreeController.getSingle);
  * Calls degreeController.createDegree function.
  * Expects JSON body with degree details.
  */
-router.post("/create", degreeController.createDegree);
+router.post("/create",isAuthenticated, degreeController.createDegree);
 
 /**
  * Route to update a degree by ID.
@@ -31,7 +32,7 @@ router.post("/create", degreeController.createDegree);
  * @param {string} id - The ID of the degree to update.
  * Expects JSON body with updated degree details.
  */
-router.put("/update/:id", degreeController.updateDegree);
+router.put("/update/:id", isAuthenticated, degreeController.updateDegree);
 
 /**
  * Route to delete a degree by ID.
@@ -39,6 +40,6 @@ router.put("/update/:id", degreeController.updateDegree);
  * Calls degreeController.deleteDegree function.
  * @param {string} id - The ID of the degree to delete.
  */
-router.delete("/delete/:id", degreeController.deleteDegree);
+router.delete("/delete/:id", isAuthenticated, degreeController.deleteDegree);
 
 module.exports = router;

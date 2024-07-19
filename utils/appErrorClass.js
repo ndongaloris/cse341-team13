@@ -8,9 +8,9 @@
  *
  * * @extends {Error}
  */
+/* ************************************************************* */
 
-class AppError extends Error {
-  /**
+/**
    * * Creates an instance of AppError.
    * *
    * * @param {string} message - The error message.
@@ -18,6 +18,7 @@ class AppError extends Error {
    * * @param {boolean} [isOperational=true] - Whether the error is operational or not. This determine if the error is from the server or not.
    
    */
+class AppError extends Error {
   constructor(message, statusCode) {
     super(message); //* Calling the message field of the parent class (Error)
     this.statusCode = statusCode; //* Setting the status code

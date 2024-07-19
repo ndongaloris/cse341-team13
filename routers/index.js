@@ -16,7 +16,7 @@ router.use("/degrees", degreeRouter);
 router.use("/institutions", institutionRouter);
 
 //* Mounting the User route under /user endpoint
-router.use("/user", userRouter);
+router.use("/users", userRouter);
 
 // Default route handler for the root endpoint
 router.get("/", (req, res) => {

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const institutionRouter = require("./institution");
 const degreeRouter = require("./degree");
+const userRouter = require("./user");
 const swagger = require("./swagger");
 const errorHandler = require("../middleware/errorHandler");
 const AppErrorClass = require("../utils/appErrorClass");
@@ -13,6 +14,9 @@ router.use("/degrees", degreeRouter);
 
 // Mounting institution routes under /institution endpoint
 router.use("/institutions", institutionRouter);
+
+//* Mounting the User route under /user endpoint
+router.use("/users", userRouter);
 
 // Default route handler for the root endpoint
 router.get("/", (req, res) => {

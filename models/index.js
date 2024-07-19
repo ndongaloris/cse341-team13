@@ -9,6 +9,7 @@ const certificateModel = require("./certificate");
 const courseModel = require("./course");
 const degreeModel = require("./degree");
 const institutionModel = require("./institution");
+const userModel = require("./user");
 
 // Database connection URI
 db.Uri = process.env.DB_URL;
@@ -19,5 +20,6 @@ db.certificate = certificateModel(mongoose);
 db.course = courseModel(mongoose);
 db.degree = degreeModel(mongoose);
 db.institution = institutionModel(mongoose);
+db.user = userModel(mongoose);
 
 module.exports = db;

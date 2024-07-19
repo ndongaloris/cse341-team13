@@ -52,6 +52,8 @@ module.exports = (mongoose) => {
         enum: ["Regional", "National", "International"],
         required: [true, "Institution accreditation type is required"],
       },
+      degrees: [{ _id: String, name: String, type: String }],
+      certificates: [{ _id: String, name: String, type: String }],
     },
     {
       timestamps: true,

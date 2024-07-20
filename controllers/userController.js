@@ -62,6 +62,7 @@ const createUser = errorHandler.catchAsync(async (req, res, next) => {
   let feedback;
 
   const newUser = {
+    _id: req.body._id,
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
@@ -100,9 +101,10 @@ const updateUser = errorHandler.catchAsync(async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const userId = req.params.id;
-  const newDoc = {
-    ...req.body,
-  };
+  const newDoc = { ...req.body };
+
+  console.log("req.body", req.body);
+  console.log("newDoc", newDoc);
 
   const result = await User.findByIdAndUpdate(userId, newDoc, {
     new: true,

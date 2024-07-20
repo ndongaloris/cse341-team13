@@ -1,0 +1,44 @@
+### Get All Certificates
+GET http://localhost:8080/certificates
+Content-Type: application/json
+
+###
+
+### Get Single Certificate by ID
+GET http://localhost:8080/certificates/
+Content-Type: application/json
+
+###
+
+### Create a New Certificate
+POST http://localhost:8080/certificates/create
+Content-Type: application/json
+
+{
+    "_id": "cert-software-development",
+    "name": "Software Development",
+    "description": "A certificate in software development.",
+    "requirements": ["Complete all core courses", "Complete a capstone project"],
+    "degree": "sftdev-byui",
+    "courses": ["course-cs101", "course-cs102", "course-cs103"]
+}
+
+###
+
+### Update a Certificate by ID
+PUT http://localhost:8080/certificates/
+Content-Type: application/json
+
+{
+  "name": "Updated Business Fundamentals",
+  "description": "An updated description.",
+  "requirements": ["Complete updated core courses"],
+  "degreeId": "sftdev-byui",
+  "courses": ["course-bus101"]
+}
+
+###
+
+### Delete a Certificate
+DELETE http://localhost:8080/certificates/
+Content-Type: application/json

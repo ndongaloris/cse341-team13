@@ -27,6 +27,7 @@ const bcrypt = require("bcrypt");
 
 module.exports = (mongoose) => {
   const UserSchema = new mongoose.Schema({
+    _id: { type: String, required: true },
     username: { type: String, unique: true, sparse: true }, //* sparse allows multiple nulls
     email: {
       type: String,

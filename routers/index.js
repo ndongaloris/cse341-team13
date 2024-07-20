@@ -8,7 +8,6 @@ const oauth = require("./oauth.js");
 const login = require("./login.js");
 const logout = require("./logout.js");
 const passport = require("passport");
-const static = require("./statics"); // Importing static routes module
 const logging = require("../controllers/logging.js");
 
 // Mounting swagger routes under /api-docs endpoint

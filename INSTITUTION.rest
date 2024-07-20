@@ -1,0 +1,56 @@
+### Get All Institutions
+GET http://localhost:8080/institutions
+Content-Type: application/json
+
+###
+
+### Get Single Institution by ID
+GET http://localhost:8080/institutions/
+Content-Type: application/json
+
+###
+
+### Create a New Institution
+POST http://localhost:8080/institutions/create
+Content-Type: application/json
+
+{
+    "_id": "byui-pw",
+  "name": "BYU Pathway Worldwide",
+  "address": "Salt Lake City, UT",
+  "description": "An educational institution providing pathways to higher education.",
+  "contactInfo": {
+    "email": "info@byupathway.org",
+    "phoneNumber": "1234567890"
+  },
+  "website": "https://www.byupathway.org",
+  "accreditation": "International",
+  "degrees": [{"_id": "sftdev-byui", "name": "Associate of Science in Business", "type": "Associate"}],
+  "certificates": [{"_id": "cert-business", "name": "Business Fundamentals", "type": "Core"}]
+}
+
+###
+
+### Update an Institution by ID
+PUT http://localhost:8080/institutions/
+Content-Type: application/json
+
+{
+  "name": "BYU Pathway Worldwide Updated",
+  "address": "Salt Lake City, UT",
+  "description": "An updated description.",
+  "contactInfo": {
+    "email": "updatedinfo@byupathway.org",
+    "phoneNumber": "0987654321"
+  },
+  "website": "https://www.updatedbyupathway.org",
+  "accreditation": "International",
+  "degrees": [{"_id": "sftdev-byui", "name": "Associate of Science in Business", "type": "Associate"}],
+  "certificates": [{"_id": "cert-business", "name": "Business Fundamentals", "type": "Core"}]
+}
+
+###
+
+### Delete an Institution
+DELETE http://localhost:8080/institutions/
+Content-Type: application/json

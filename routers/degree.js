@@ -32,7 +32,7 @@ router.post("/create", isAuthenticated, degreeController.createDegree);
  * * @param {string} id - The ID of the degree to update.
  * * Expects JSON body with updated degree details.
  */
-router.put("/update/:id", isAuthenticated, degreeController.updateDegree);
+router.put("/update/:id",  degreeController.updateDegree);
 
 /**
  * * Route to delete a degree by ID.
@@ -40,6 +40,6 @@ router.put("/update/:id", isAuthenticated, degreeController.updateDegree);
  * * Calls degreeController.deleteDegree function.
  * * @param {string} id - The ID of the degree to delete.
  */
-router.delete("/delete/:id", isAuthenticated, degreeController.deleteDegree);
+router.delete("/delete/:id", degreeController.deleteDegree);
 
 module.exports = router;

@@ -5,7 +5,7 @@ Content-Type: application/json
 ###
 
 ### Get Single User by ID
-GET http://localhost:8080/users/669a72f3bd0ed9470bcde9f4
+GET http://localhost:8080/users/stdntf-admin
 Content-Type: application/json
 
 ###
@@ -15,17 +15,18 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-    "username": "charlie_chaplin",
-    "email": "charlie@example.com",
-    "password": "password123",
-    "role": "student"
+  "_id": "stdntf-admin",
+   "username": "frank_admin",
+   "email": "frank@example.com",
+   "password": "adminpassword",
+   "role": "admin"
 }
 
 
 ###
 
 ### Update a User by Admin
-PUT http://localhost:8080/users/669a7128bd0ed9470bcde9f0
+PUT http://localhost:8080/users/stdntf-admin
 Content-Type: application/json
 
 {

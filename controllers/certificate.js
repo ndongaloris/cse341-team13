@@ -8,7 +8,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} res - The response object.
  */
 const getAll = errorHandler.catchAsync(async (req, res, next) => {
-  const result = await databaseModel.find();
+  const result = await databaseModel.find({});
 
   if (!result) {
     return next(new AppErrorClass("No certificates found", 404));
@@ -40,12 +40,7 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
  */
 const createCertificate = errorHandler.catchAsync(async (req, res, next) => {
   const result = await databaseModel.create({
-    _id: req.body._id,
-    name: req.body.name,
-    description: req.body.description,
-    requirement: req.body.requirement,
-    degree: req.body.degree,
-    courses: req.body.courses
+    ...req.body,
   });
 
   if (!result) {
@@ -65,8 +60,10 @@ const updateCertificate = errorHandler.catchAsync(async (req, res, next) => {
   const newDoc = {};
 
   if (req.body.name != undefined) newDoc.name = req.body.name;
-  if (req.body.description !== undefined) newDoc.description = req.body.description;
-  if (req.body.requirement !== undefined) newDoc.requirement = req.body.requirement;
+  if (req.body.description !== undefined)
+    newDoc.description = req.body.description;
+  if (req.body.requirement !== undefined)
+    newDoc.requirement = req.body.requirement;
   if (req.body.degree !== undefined) newDoc.degree = req.body.degree;
   if (req.body.courses !== undefined) newDoc.courses = req.body.courses;
 

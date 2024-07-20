@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const institutionRouter = require("./institution");
 const degreeRouter = require("./degree");
+const certificateRouter = require("./certificate");
+const courseRouter = require("./course");
 const swagger = require("./swagger");
 const errorHandler = require("../middleware/errorHandler");
 const AppErrorClass = require("../utils/appErrorClass");
@@ -17,6 +19,12 @@ router.use("/degrees", degreeRouter);
 
 // Mounting institution routes under /institution endpoint
 router.use("/institutions", institutionRouter);
+
+// Mounting degree routes under /degree endpoint
+router.use("/courses", courseRouter);
+
+// Mounting institution routes under /institution endpoint
+router.use("/certificates", certificateRouter);
 
 router.get("/login", passport.authenticate("github"), login);
 router.get("/logout", logout);

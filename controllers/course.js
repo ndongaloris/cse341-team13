@@ -8,7 +8,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} res - The response object.
  */
 const getAll = errorHandler.catchAsync(async (req, res, next) => {
-  const result = await databaseModel.find().populate('certificate degree');
+  const result = await databaseModel.find().populate("certificate degree");
 
   if (!result) {
     return next(new AppErrorClass("No courses found", 404));
@@ -40,15 +40,14 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
  */
 const createCourse = errorHandler.catchAsync(async (req, res, next) => {
   const result = await databaseModel.create({
-    _id: req.params._id,
+    _id: req.body._id,
     name: req.body.name,
     code: req.body.code,
     description: req.body.description,
-    credit: req.body.credit,
+    credit: req.body.credits,
     certificate: req.body.certificate,
     degree: req.body.degree,
-    courseType: req.body.type
-
+    courseType: req.body.courseType,
   });
 
   if (!result) {
@@ -69,9 +68,11 @@ const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
 
   if (req.body.name != undefined) newDoc.name = req.body.name;
   if (req.body.code !== undefined) newDoc.code = req.body.code;
-  if (req.body.description !== undefined) newDoc.description = req.body.description;
+  if (req.body.description !== undefined)
+    newDoc.description = req.body.description;
   if (req.body.credit !== undefined) newDoc.credit = req.body.credit;
-  if (req.body.certificate !== undefined) newDoc.certificate = req.body.certificate;
+  if (req.body.certificate !== undefined)
+    newDoc.certificate = req.body.certificate;
   if (req.body.degree !== undefined) newDoc.degree = req.body.degree;
   if (req.body.type !== undefined) newDoc.courseType = req.body.type;
 

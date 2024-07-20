@@ -95,8 +95,8 @@
       "post": {
         "description": "",
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       }
@@ -114,8 +114,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       }
@@ -133,8 +133,8 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Bad Request"
+          "default": {
+            "description": ""
           }
         }
       }

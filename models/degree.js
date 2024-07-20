@@ -7,12 +7,12 @@ module.exports = (mongoose) => {
         minlength: [3, "Degree name must be at least 3 characters long"],
       },
       institutions: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Institutions",
         required: [true, "Institution is required"],
       },
       certificates: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Certificates",
         required: [true, "Certificate is required"],
       },

@@ -7,7 +7,10 @@
   },
   "host": "localhost",
   "basePath": "/",
-  "schemes": ["https", "http"],
+  "schemes": [
+    "https",
+    "http"
+  ],
   "paths": {
     "/login": {
       "get": {
@@ -53,8 +56,8 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -171,7 +174,7 @@
         }
       }
     },
-    "/institutions/update/{id}": {
+    "/certificates/update/{id}": {
       "put": {
         "description": "",
         "parameters": [
@@ -189,7 +192,7 @@
         }
       }
     },
-    "/institutions/delete/{id}": {
+    "/certificates/delete/{id}": {
       "delete": {
         "description": "",
         "parameters": [

@@ -22,7 +22,7 @@ router.get("/:id", courseController.getSingle);
  * Calls courseController.createCourse function.
  * Expects JSON body with course details.
  */
-router.post("/create", courseController.createCourse);
+router.post("/", courseController.createCourse);
 
 /**
  * Route to update a course by ID.

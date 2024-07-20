@@ -12,11 +12,18 @@ GET http://localhost:8080/courses/ HTTP/1.1
 ###
 
 #Update by ID
-PUT http://localhost:8080/courses/ HTTP/1.1
+POST http://localhost:8080/courses/ HTTP/1.1
 Content-Type: application/json
 
 {
-    
+  "_id": "course-bus101",
+  "name": "Introduction to Business",
+  "code": "BUS101",
+  "description": "An introductory course to business principles.",
+  "credits": 3,
+  "certificate": "cert-business",
+  "degree": "sftdev-byui",
+  "courseType": "Core"
 }
 
 ###

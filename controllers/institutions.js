@@ -40,10 +40,15 @@ const getSingle = errorHandler.catchAsync(async (req, res) => {
  */
 const createInstitution = errorHandler.catchAsync(async (req, res, next) => {
   const result = await databaseModel.create({
+    _id: req.body._id,
     name: req.body.name,
     address: req.body.address,
     description: req.body.description,
-    dateOfCreation: req.body.dateOfCreation,
+    contactInfo: req.body.contactInfo,
+    website: req.body.website,
+    accreditation: req.body.accreditation,
+    degrees: req.body.degrees,
+    certificates: req.body.certificates,
   });
 
   res.status(201).json(result);

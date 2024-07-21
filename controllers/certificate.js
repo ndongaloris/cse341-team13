@@ -8,7 +8,17 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} res - The response object.
  */
 const getAll = async (req, res, next) => {
-  const result = await databaseModel.find();
+  const result = await databaseModel.find()
+  .populate({
+    path: "degree",
+    select: "name"
+  })
+  .populate({
+    path: "courses",
+    select: "code name description"
+  });
+
+  console.log("Certificate:", result);
 
   if (!result) {
     return next(new AppErrorClass("No certificates found", 404));
@@ -24,7 +34,15 @@ const getAll = async (req, res, next) => {
  */
 const getSingle = async (req, res, next) => {
   const certificateId = req.params._id;
-  const result = await databaseModel.findOne({ _id: certificateId });
+  const result = await databaseModel.findOne({ _id: certificateId })
+  .populate({
+    path: "degree",
+    select: "name"
+  })
+  .populate({
+    path: "courses",
+    select: "code name description"
+  });;
 
   if (!result) {
     return next(new AppErrorClass("No certificate found with that ID", 404));
@@ -43,7 +61,7 @@ const createCertificate = async (req, res, next) => {
     _id: req.body._id,
     name: req.body.name,
     description: req.body.description,
-    requirement: req.body.requirement,
+    requirements: req.body.requirements,
     degree: req.body.degree,
     courses: req.body.courses
   });
@@ -66,7 +84,7 @@ const updateCertificate = async (req, res, next) => {
 
   if (req.body.name != undefined) newDoc.name = req.body.name;
   if (req.body.description !== undefined) newDoc.description = req.body.description;
-  if (req.body.requirement !== undefined) newDoc.requirement = req.body.requirement;
+  if (req.body.requirements !== undefined) newDoc.requirements = req.body.requirements;
   if (req.body.degree !== undefined) newDoc.degree = req.body.degree;
   if (req.body.courses !== undefined) newDoc.courses = req.body.courses;
 
@@ -88,7 +106,7 @@ const updateCertificate = async (req, res, next) => {
  * @param {Object} res - The response object.
  */
 const deleteCertificate = async (req, res, next) => {
-  const certificateId = req.params.id;
+  const certificateId = req.params._id;
   const result = await databaseModel.deleteOne({ _id: certificateId });
 
   if (!result.deletedCount) {

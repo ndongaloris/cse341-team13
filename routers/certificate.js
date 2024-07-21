@@ -16,7 +16,7 @@ router.get("/", certificateController.getAll);
  * Calls certificateController.getSingle function.
  * @param {string} id - The ID of the certificate to retrieve.
  */
-router.get("/:id", certificateController.getSingle);
+router.get("/:_id", certificateController.getSingle);
 
 /**
  * Route to create a new certificate.
@@ -33,7 +33,7 @@ router.post("/create", isAuthenticated, certificateController.createCertificate)
  * @param {string} id - The ID of the certificate to update.
  * Expects JSON body with updated certificate details.
  */
-router.put("/update/:id", isAuthenticated, certificateController.updateCertificate);
+router.put("/update/:_id", isAuthenticated, certificateController.updateCertificate);
 
 /**
  * Route to delete a certificate by ID.
@@ -41,6 +41,6 @@ router.put("/update/:id", isAuthenticated, certificateController.updateCertifica
  * Calls certificateController.deletecertificate function.
  * @param {string} id - The ID of the certificate to delete.
  */
-router.delete("/delete/:id", isAuthenticated, certificateController.deleteCertificate);
+router.delete("/delete/:_id", isAuthenticated, certificateController.deleteCertificate);
 
 module.exports = router;

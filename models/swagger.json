@@ -5,7 +5,7 @@
     "title": "School's API",
     "description": "This is a school's API "
   },
-  "host": "https://cse341-team13.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
     "https",
@@ -362,12 +362,12 @@
         }
       }
     },
-    "/courses/{id}": {
+    "/courses/{_id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -390,6 +390,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "_id": {
+                  "example": "any"
+                },
                 "name": {
                   "example": "any"
                 },
@@ -408,7 +411,7 @@
                 "degree": {
                   "example": "any"
                 },
-                "type": {
+                "courseType": {
                   "example": "any"
                 }
               }
@@ -459,7 +462,7 @@
                 "degree": {
                   "example": "any"
                 },
-                "type": {
+                "courseType": {
                   "example": "any"
                 }
               }
@@ -507,12 +510,12 @@
         }
       }
     },
-    "/certificates/{id}": {
+    "/certificates/{_id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -544,7 +547,7 @@
                 "description": {
                   "example": "any"
                 },
-                "requirement": {
+                "requirements": {
                   "example": "any"
                 },
                 "degree": {
@@ -589,7 +592,7 @@
                 "description": {
                   "example": "any"
                 },
-                "requirement": {
+                "requirements": {
                   "example": "any"
                 },
                 "degree": {
@@ -708,6 +711,30 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "role": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {

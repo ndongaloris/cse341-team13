@@ -15,7 +15,7 @@ const doc = {
     },
 
     // Host URL where the API is hosted
-    host: "cse341-team13.onrender.com",
+    host: "https://cse341-team13.onrender.com",
     
     // Array of supported protocols
     schemes: ["https", "http"],

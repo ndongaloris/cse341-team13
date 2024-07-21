@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userController = require("../controllers/userController");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 //*********************** Routers *********************/
 
@@ -8,7 +9,7 @@ const userController = require("../controllers/userController");
  * * GET /
  * * Calls userController.getAll function.
  */
-router.get("/", userController.getAllUsers);
+router.get("/", isAuthenticated, userController.getAllUsers);
 
 /**
  * * Route to get a single user by ID.
@@ -24,7 +25,7 @@ router.get("/:id", userController.getSingleUser);
  * * Calls userController.createUser function.
  * * Expects JSON body with user details.
  */
-router.post("/", userController.createUser);
+router.post("/", isAuthenticated, userController.createUser);
 
 /**
  * * Route to update a user by ID for admin.
@@ -33,7 +34,7 @@ router.post("/", userController.createUser);
  * * @param {string} id - The ID of the user to update.
  * * Expects JSON body with updated user details.
  */
-router.put("/:id", userController.updateUser);
+router.put("/:id", isAuthenticated, userController.updateUser);
 
 /**
  * * Route to update a user by ID for all users
@@ -42,7 +43,7 @@ router.put("/:id", userController.updateUser);
  * * @param {string} id - The ID of the user to update.
  * * Expects JSON body with updated user details.
  */
-router.put("/me/:id", userController.updateMe);
+router.put("/me/:id", isAuthenticated, userController.updateMe);
 
 /**
  * * Route to delete a user by ID.
@@ -50,6 +51,6 @@ router.put("/me/:id", userController.updateMe);
  * * Calls userController.deleteUser function.
  * * @param {string} id - The ID of the user to delete.
  */
-router.delete("/:id", userController.deleteUser);
+router.delete("/:id", isAuthenticated, userController.deleteUser);
 
 module.exports = router;

@@ -243,8 +243,8 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -261,8 +261,8 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -270,7 +270,42 @@
     "/courses/create": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "code": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "credit": {
+                  "example": "any"
+                },
+                "certificate": {
+                  "example": "any"
+                },
+                "degree": {
+                  "example": "any"
+                },
+                "type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "400": {
             "description": "Bad Request"
           }
@@ -286,9 +321,42 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "code": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "credit": {
+                  "example": "any"
+                },
+                "certificate": {
+                  "example": "any"
+                },
+                "degree": {
+                  "example": "any"
+                },
+                "type": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "400": {
             "description": "Bad Request"
           }
@@ -307,6 +375,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "No Content"
+          },
           "400": {
             "description": "Bad Request"
           }
@@ -317,8 +388,8 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -335,8 +406,8 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -344,7 +415,39 @@
     "/certificates/create": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "requirement": {
+                  "example": "any"
+                },
+                "degree": {
+                  "example": "any"
+                },
+                "courses": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
+          "201": {
+            "description": "Created"
+          },
           "400": {
             "description": "Bad Request"
           }
@@ -360,9 +463,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "requirement": {
+                  "example": "any"
+                },
+                "degree": {
+                  "example": "any"
+                },
+                "courses": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
+          "200": {
+            "description": "OK"
+          },
           "400": {
             "description": "Bad Request"
           }
@@ -381,6 +511,9 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "No Content"
+          },
           "400": {
             "description": "Bad Request"
           }

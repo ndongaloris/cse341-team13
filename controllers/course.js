@@ -7,7 +7,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getAll = errorHandler.catchAsync(async (req, res, next) => {
+const getAll = async (req, res, next) => {
   const result = await databaseModel.find().populate('certificate degree');
 
   if (!result) {
@@ -15,14 +15,14 @@ const getAll = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Retrieves a single course from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getSingle = errorHandler.catchAsync(async (req, res, next) => {
+const getSingle = async (req, res, next) => {
   const courseId = req.params._id;
   const result = await databaseModel.findOne({ _id: courseId });
 
@@ -31,14 +31,14 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Creates a new course in the database.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const createCourse = errorHandler.catchAsync(async (req, res, next) => {
+const createCourse = async (req, res, next) => {
   const result = await databaseModel.create({
     _id: req.params._id,
     name: req.body.name,
@@ -56,14 +56,14 @@ const createCourse = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(201).json(result);
-});
+};
 
 /**
  * Updates a course in the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
+const updateCourse = async (req, res, next) => {
   const courseId = req.params._id;
   const newDoc = {};
 
@@ -85,14 +85,14 @@ const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
   } else {
     res.status(200).json(result);
   }
-});
+};
 
 /**
  * Deletes a course from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const deleteCourse = errorHandler.catchAsync(async (req, res, next) => {
+const deleteCourse = async (req, res, next) => {
   const courseId = req.params._id;
   const result = await databaseModel.deleteOne({ _id: courseId });
 
@@ -101,7 +101,7 @@ const deleteCourse = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(204).json({ message: "course deleted successfully", result });
-});
+};
 
 // Exporting the CRUD functions
 module.exports = {

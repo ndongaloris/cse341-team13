@@ -7,7 +7,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getAll = errorHandler.catchAsync(async (req, res, next) => {
+const getAll = async (req, res, next) => {
   const result = await databaseModel.find();
 
   if (!result) {
@@ -15,14 +15,14 @@ const getAll = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Retrieves a single certificate from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getSingle = errorHandler.catchAsync(async (req, res, next) => {
+const getSingle = async (req, res, next) => {
   const certificateId = req.params._id;
   const result = await databaseModel.findOne({ _id: certificateId });
 
@@ -31,14 +31,14 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Creates a new certificate in the database.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const createCertificate = errorHandler.catchAsync(async (req, res, next) => {
+const createCertificate = async (req, res, next) => {
   const result = await databaseModel.create({
     _id: req.body._id,
     name: req.body.name,
@@ -53,14 +53,14 @@ const createCertificate = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(201).json(result);
-});
+};
 
 /**
  * Updates a certificate in the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const updateCertificate = errorHandler.catchAsync(async (req, res, next) => {
+const updateCertificate = async (req, res, next) => {
   const certificateId = req.params._id;
   const newDoc = {};
 
@@ -80,14 +80,14 @@ const updateCertificate = errorHandler.catchAsync(async (req, res, next) => {
   } else {
     res.status(200).json(result);
   }
-});
+};
 
 /**
  * Deletes a certificate from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const deleteCertificate = errorHandler.catchAsync(async (req, res, next) => {
+const deleteCertificate = async (req, res, next) => {
   const certificateId = req.params.id;
   const result = await databaseModel.deleteOne({ _id: certificateId });
 
@@ -96,7 +96,7 @@ const deleteCertificate = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(204).json({ message: "certificate deleted successfully", result });
-});
+};
 
 // Exporting the CRUD functions
 module.exports = {

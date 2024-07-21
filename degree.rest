@@ -3,16 +3,35 @@
 # DEGREE #
 ###
 # GET ALL
-GET http://localhost:8080/degree
+GET http://localhost:8080/degrees
 
 ###
 # GET BY ID
-GET http://localhost:8080/degree/66900fe86686128f9b80dfab
+GET http://localhost:8080/degrees/66900fe86686128f9b80dfab
 
 ###
 
+POST http://localhost:8080/degrees/create HTTP/1.1
+Content-Type: application/json
+
+{
+    "_id": "sftdev-byui",
+    "name": "Associate of Science in Business",
+    "institutions": "byui-pw",
+    "type": "Associate",
+    "description": "An associate degree focused on business principles.",
+    "potentialEmployment": ["Business Analyst", "Marketing Coordinator"],
+    "duration": "2 years",
+    "creditsRequired": 60,
+    "level": "Undergraduate",
+    "certificates": "cert-business"
+}
+
+###
+
+
 #Update by ID
-PUT http://localhost:8080/degree/update/6692d76a6686128f9b89a8ed HTTP/1.1
+PUT http://localhost:8080/degrees/update/6692d76a6686128f9b89a8ed HTTP/1.1
 Content-Type: application/json
 
 {
@@ -21,7 +40,7 @@ Content-Type: application/json
 
 ###
 # Delete BY ID
-DELETE  http://localhost:8080/degree/delete/668d35ad3911a672d32e22ea
+DELETE  http://localhost:8080/degrees/delete/668d35ad3911a672d32e22ea
 
 
 # INSTITUTION #

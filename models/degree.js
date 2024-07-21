@@ -1,18 +1,22 @@
 module.exports = (mongoose) => {
   const DegreeSchema = new mongoose.Schema(
     {
+      _id: {
+        type: String,
+        required: [true, "Degree ID is required"],
+      },
       name: {
         type: String,
         required: [true, "Degree name is required"],
         minlength: [3, "Degree name must be at least 3 characters long"],
       },
       institutions: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Institutions",
         required: [true, "Institution is required"],
       },
       certificates: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Certificates",
         required: [true, "Certificate is required"],
       },
@@ -59,7 +63,7 @@ module.exports = (mongoose) => {
    * * without conflicts.
    *
    */
-  DegreeSchema.index({ institution: 1, name: 1, type: 1 }, { unique: true });
+  DegreeSchema.index({ institutions: 1, name: 1, type: 1 }, { unique: true });
 
   /**
    * Defines the Degree model.

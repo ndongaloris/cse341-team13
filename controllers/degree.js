@@ -40,11 +40,16 @@ const getSingle = async (req, res, next) => {
  */
 const createDegree = async (req, res, next) => {
   const result = await databaseModel.create({
+    _id: req.body._id,
     name: req.body.name,
-    institution: req.body.institution,
+    institutions: req.body.institutions,
+    certificates: req.body.certificates,
     type: req.body.type,
     description: req.body.description,
     potentialEmployment: req.body.potentialEmployment,
+    duration: req.body.duration,
+    creditsRequired: req.body.creditsRequired,
+    level: req.body.level,
   });
 
   if (!result) {

@@ -7,7 +7,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getAll = errorHandler.catchAsync(async (req, res) => {
+const getAll = async (req, res) => {
   const result = await databaseModel.find();
 
   if (!result) {
@@ -15,14 +15,14 @@ const getAll = errorHandler.catchAsync(async (req, res) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Retrieves a single institution from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getSingle = errorHandler.catchAsync(async (req, res) => {
+const getSingle = async (req, res) => {
   const institutionId = req.params.id;
   const result = await databaseModel.findOne({ _id: institutionId });
 
@@ -31,14 +31,14 @@ const getSingle = errorHandler.catchAsync(async (req, res) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Creates a new institution in the database.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const createInstitution = errorHandler.catchAsync(async (req, res, next) => {
+const createInstitution = async (req, res, next) => {
   const result = await databaseModel.create({
     name: req.body.name,
     address: req.body.address,
@@ -47,14 +47,14 @@ const createInstitution = errorHandler.catchAsync(async (req, res, next) => {
   });
 
   res.status(201).json(result);
-});
+};
 
 /**
  * Deletes an institution from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const deleteInstitution = errorHandler.catchAsync(async (req, res, next) => {
+const deleteInstitution = async (req, res, next) => {
   const institutionId = req.params.id;
   const result = await databaseModel.deleteOne({ _id: institutionId });
 
@@ -63,14 +63,14 @@ const deleteInstitution = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(204).json({ message: "Institution deleted successfully", result });
-});
+};
 
 /**
  * Updates an institution in the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const updateInstitution = errorHandler.catchAsync(async (req, res, next) => {
+const updateInstitution = async (req, res, next) => {
   const institutionId = req.params.id;
   const newDoc = {};
 
@@ -91,7 +91,7 @@ const updateInstitution = errorHandler.catchAsync(async (req, res, next) => {
   } else {
     res.status(200).json(result);
   }
-});
+};
 
 // Exporting the CRUD functions
 module.exports = {

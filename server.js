@@ -6,7 +6,7 @@ const cors = require("cors");
 const router = require("./routers/index"); // Imports the main router containing all routes
 require("./database/connect"); // Connects to MongoDB
 const bodyParser = require("body-parser"); // Import body-parser (if not using built-in)
-
+require('dotenv').config();
 // Middleware setup
 app.use(cors())
 .use(express.json())

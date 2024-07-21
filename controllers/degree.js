@@ -38,7 +38,7 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const createDegree = errorHandler.catchAsync(async (req, res, next) => {
+const createDegree = async (req, res, next) => {
   const result = await databaseModel.create({
     name: req.body.name,
     institution: req.body.institution,
@@ -52,7 +52,7 @@ const createDegree = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(201).json(result);
-});
+};
 
 /**
  * Updates a degree in the database by ID.

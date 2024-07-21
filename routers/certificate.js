@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const certificateController = require("../controllers/certificate");
+const { isAuthenticated } = require("../middleware/authenticate");
+
 
 /**
  * Route to get all certificates.
@@ -22,7 +24,7 @@ router.get("/:id", certificateController.getSingle);
  * Calls certificateController.createcertificate function.
  * Expects JSON body with certificate details.
  */
-router.post("/create", certificateController.createCertificate);
+router.post("/create", isAuthenticated, certificateController.createCertificate);
 
 /**
  * Route to update a certificate by ID.
@@ -31,7 +33,7 @@ router.post("/create", certificateController.createCertificate);
  * @param {string} id - The ID of the certificate to update.
  * Expects JSON body with updated certificate details.
  */
-router.put("/update/:id", certificateController.updateCertificate);
+router.put("/update/:id", isAuthenticated, certificateController.updateCertificate);
 
 /**
  * Route to delete a certificate by ID.
@@ -39,6 +41,6 @@ router.put("/update/:id", certificateController.updateCertificate);
  * Calls certificateController.deletecertificate function.
  * @param {string} id - The ID of the certificate to delete.
  */
-router.delete("/delete/:id", certificateController.deleteCertificate);
+router.delete("/delete/:id", isAuthenticated, certificateController.deleteCertificate);
 
 module.exports = router;

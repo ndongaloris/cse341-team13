@@ -7,7 +7,7 @@ const { isAuthenticated } = require("../middleware/authenticate");
  * * GET /
  * * Calls degreeController.getAll function.
  */
-router.get("/",isAuthenticated, degreeController.getAll);
+router.get("/", degreeController.getAll);
 
 /**
  * * Route to get a single degree by ID.

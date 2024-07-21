@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const institutionController = require("../controllers/institutions");
 const { isAuthenticated } = require("../middleware/authenticate");
+
 /**
  * * Route to get all institutions.
  * * GET /

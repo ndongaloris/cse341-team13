@@ -11,6 +11,8 @@ const login = require("./login.js");
 const logout = require("./logout.js");
 const passport = require("passport");
 const logging = require("../controllers/logging.js");
+const user = require("./user.js");
+
 
 // Mounting swagger routes under /api-docs endpoint
 router.use("/", swagger, oauth);
@@ -25,6 +27,8 @@ router.use("/courses", courseRouter);
 
 // Mounting institution routes under /institution endpoint
 router.use("/certificates", certificateRouter);
+
+router.use("/user", user);
 
 router.get("/login", passport.authenticate("github"), login);
 router.get("/logout", logout);

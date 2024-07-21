@@ -12,6 +12,10 @@ module.exports = (mongoose) => {
    */
   const InstitutionSchema = new mongoose.Schema(
     {
+      _id: {
+        type: String,
+        required: [true, "Institution ID is required"],
+      },
       name: {
         type: String, // Name of the institution
         required: [true, "Institution name is required"],

@@ -7,7 +7,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getAll = errorHandler.catchAsync(async (req, res, next) => {
+const getAll = async (req, res, next) => {
   const result = await databaseModel.find();
 
   if (!result) {
@@ -15,14 +15,14 @@ const getAll = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Retrieves a single degree from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getSingle = errorHandler.catchAsync(async (req, res, next) => {
+const getSingle = async (req, res, next) => {
   const degreeId = req.params.id;
   const result = await databaseModel.findOne({ _id: degreeId });
 
@@ -31,20 +31,25 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json(result);
-});
+};
 
 /**
  * Creates a new degree in the database.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const createDegree = errorHandler.catchAsync(async (req, res, next) => {
+const createDegree = async (req, res, next) => {
   const result = await databaseModel.create({
+    _id: req.body._id,
     name: req.body.name,
-    institution: req.body.institution,
+    institutions: req.body.institutions,
+    certificates: req.body.certificates,
     type: req.body.type,
     description: req.body.description,
     potentialEmployment: req.body.potentialEmployment,
+    duration: req.body.duration,
+    creditsRequired: req.body.creditsRequired,
+    level: req.body.level,
   });
 
   if (!result) {
@@ -52,14 +57,14 @@ const createDegree = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(201).json(result);
-});
+};
 
 /**
  * Updates a degree in the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const updateDegree = errorHandler.catchAsync(async (req, res, next) => {
+const updateDegree = async (req, res, next) => {
   const degreeId = req.params.id;
   const newDoc = {};
 
@@ -82,14 +87,14 @@ const updateDegree = errorHandler.catchAsync(async (req, res, next) => {
   } else {
     res.status(200).json(result);
   }
-});
+};
 
 /**
  * Deletes a degree from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const deleteDegree = errorHandler.catchAsync(async (req, res, next) => {
+const deleteDegree = async (req, res, next) => {
   const degreeId = req.params.id;
   const result = await databaseModel.deleteOne({ _id: degreeId });
 
@@ -98,7 +103,7 @@ const deleteDegree = errorHandler.catchAsync(async (req, res, next) => {
   }
 
   res.status(204).json({ message: "Degree deleted successfully", result });
-});
+};
 
 // Exporting the CRUD functions
 module.exports = {

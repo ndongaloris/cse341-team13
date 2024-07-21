@@ -5,11 +5,7 @@
     "title": "School's API",
     "description": "This is a school's API "
   },
-<<<<<<< HEAD
-  "host": "localhost:8080",
-=======
   "host": "cse341-team13.onrender.com",
->>>>>>> 76a44918340938b3e3d80cb78403d5759954f531
   "basePath": "/",
   "schemes": [
     "https",
@@ -432,12 +428,12 @@
         }
       }
     },
-    "/courses/update/{id}": {
+    "/courses/update/{_id}": {
       "put": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -483,12 +479,12 @@
         }
       }
     },
-    "/courses/delete/{id}": {
+    "/courses/delete/{_id}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -574,12 +570,12 @@
         }
       }
     },
-    "/certificates/update/{id}": {
+    "/certificates/update/{_id}": {
       "put": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -619,12 +615,12 @@
         }
       }
     },
-    "/certificates/delete/{id}": {
+    "/certificates/delete/{_id}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "_id",
             "in": "path",
             "required": true,
             "type": "string"

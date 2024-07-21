@@ -8,7 +8,7 @@ const app = express();
 const cors = require("cors");
 const router = require("./routers/index"); // Imports the main router containing all routes
 const bodyParser = require("body-parser"); // Import body-parser (if not using built-in)
-
+require('dotenv').config();
 // Middleware setup
 app.use(cors())
     .use(express.json())

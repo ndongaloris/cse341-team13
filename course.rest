@@ -7,7 +7,7 @@ GET http://localhost:8080/courses HTTP/1.1
 
 ###
 # GET BY ID
-GET http://localhost:8080/courses/ HTTP/1.1
+GET http://localhost:8080/courses/course-bus101 HTTP/1.1
 
 ###
 

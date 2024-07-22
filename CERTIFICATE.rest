@@ -5,7 +5,7 @@ Content-Type: application/json
 ###
 
 ### Get Single Certificate by ID
-GET http://localhost:8080/certificates/
+GET http://localhost:8080/certificates/cert-business
 Content-Type: application/json
 
 ###
@@ -15,12 +15,12 @@ POST http://localhost:8080/certificates/create
 Content-Type: application/json
 
 {
-    "_id": "cert-software-development",
-    "name": "Software Development",
-    "description": "A certificate in software development.",
+    "_id": "cert-info-tech",
+    "name": "Information Technology",
+    "description": "A certificate in information technology.",
     "requirements": ["Complete all core courses", "Complete a capstone project"],
     "degree": "sftdev-byui",
-    "courses": ["course-cs101", "course-cs102", "course-cs103"]
+    "courses": ["IT242", "course-cs102", "course-cs103"]
 }
 
 ###
@@ -40,5 +40,5 @@ Content-Type: application/json
 ###
 
 ### Delete a Certificate
-DELETE http://localhost:8080/certificates/
+DELETE http://localhost:8080/certificates/delete/cert-software-development
 Content-Type: application/json

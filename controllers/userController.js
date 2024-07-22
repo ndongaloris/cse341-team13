@@ -11,7 +11,7 @@ const AppErrorClass = require("../utils/appErrorClass");
  * * @param {Object} next - The next middleware function.
  *
  */
-const getAllUsers = errorHandler.catchAsync(async (req, res, next) => {
+const getAllUsers = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const result = await User.find({});
@@ -25,7 +25,7 @@ const getAllUsers = errorHandler.catchAsync(async (req, res, next) => {
     results: result.length,
     data: result,
   });
-});
+};
 
 /**
  * * Retrieves a single user from the database by ID.
@@ -34,7 +34,7 @@ const getAllUsers = errorHandler.catchAsync(async (req, res, next) => {
  * * @param {Object} next - The next middleware function.
  *
  */
-const getSingleUser = errorHandler.catchAsync(async (req, res, next) => {
+const getSingleUser = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const userId = req.params.id;
@@ -48,7 +48,7 @@ const getSingleUser = errorHandler.catchAsync(async (req, res, next) => {
     status: "success",
     data: result,
   });
-});
+};
 
 /**
  * * Creates a new user in the database.
@@ -57,7 +57,7 @@ const getSingleUser = errorHandler.catchAsync(async (req, res, next) => {
  * * @param {Object} next - The next middleware function.
  *
  */
-const createUser = errorHandler.catchAsync(async (req, res, next) => {
+const createUser = async (req, res, next) => {
   //# swagger.tags = ['User']
   let feedback;
 
@@ -87,7 +87,7 @@ const createUser = errorHandler.catchAsync(async (req, res, next) => {
     data: result,
     feedback,
   });
-});
+};
 
 /**
  * * Updates a user in the database by ID.
@@ -97,11 +97,18 @@ const createUser = errorHandler.catchAsync(async (req, res, next) => {
  * * @param {Object} next - The next middleware function.
  *
  */
-const updateUser = errorHandler.catchAsync(async (req, res, next) => {
+const updateUser = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const userId = req.params.id;
-  const newDoc = { ...req.body };
+  // const newDoc = { ...req.body };
+  const newDoc = {
+    _id: req.body._id,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    role: req.body.role
+  }
 
   console.log("req.body", req.body);
   console.log("newDoc", newDoc);
@@ -119,7 +126,7 @@ const updateUser = errorHandler.catchAsync(async (req, res, next) => {
       data: result,
     });
   }
-});
+};
 
 /**
  * * Updates a user in the database by ID.
@@ -129,7 +136,7 @@ const updateUser = errorHandler.catchAsync(async (req, res, next) => {
  * * @param {Object} next - The next middleware function.
  *
  */
-const updateMe = errorHandler.catchAsync(async (req, res, next) => {
+const updateMe = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   let feedback;
@@ -165,7 +172,7 @@ const updateMe = errorHandler.catchAsync(async (req, res, next) => {
       feedback,
     });
   }
-});
+};
 
 /**
  * * Deletes a user from the database by ID.
@@ -174,7 +181,7 @@ const updateMe = errorHandler.catchAsync(async (req, res, next) => {
  * * @param {Object} next - The next middleware function.
  *
  */
-const deleteUser = errorHandler.catchAsync(async (req, res, next) => {
+const deleteUser = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const userId = req.params.id;
@@ -188,7 +195,7 @@ const deleteUser = errorHandler.catchAsync(async (req, res, next) => {
     status: "success",
     data: null,
   });
-});
+};
 
 module.exports = {
   getAllUsers,

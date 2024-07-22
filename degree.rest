@@ -7,7 +7,7 @@ GET http://localhost:8080/degrees
 
 ###
 # GET BY ID
-GET http://localhost:8080/degrees/66900fe86686128f9b80dfab
+GET http://localhost:8080/degrees/sftdev-byui
 
 ###
 

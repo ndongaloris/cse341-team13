@@ -15,14 +15,14 @@ module.exports = (mongoose) => {
       required: [true, "Requirements are required"],
     },
     degree: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Degrees",
       required: [true, "Degree type is required"],
     },
     courses: {
       type: [
         {
-          type: String,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "Courses",
           required: [true, "Course is required"],
         },
@@ -30,16 +30,16 @@ module.exports = (mongoose) => {
     },
   });
 
-  CertificateSchema.pre("find", function (next) {
-    this.populate({
-      path: "degree",
-      select: "name",
-    }).populate({
-      path: "courses",
-      select: "code name description",
-    });
-    next();
-  });
+  // CertificateSchema.pre(/^find/, function (next) {
+  //   this.populate({
+  //     path: "degree",
+  //     select: "name",
+  //   }).populate({
+  //     path: "courses",
+  //     select: "code name description",
+  //   });
+  //   next();
+  // });
 
   /**
    * Defines the Certificate model.

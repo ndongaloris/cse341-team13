@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const courseController = require("../controllers/course");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 /**
  * Route to get all courses.
@@ -14,7 +15,7 @@ router.get("/", courseController.getAll);
  * Calls courseController.getSingle function.
  * @param {string} id - The ID of the course to retrieve.
  */
-router.get("/:id", courseController.getSingle);
+router.get("/:_id", courseController.getSingle);
 
 /**
  * Route to create a new course.
@@ -22,7 +23,7 @@ router.get("/:id", courseController.getSingle);
  * Calls courseController.createCourse function.
  * Expects JSON body with course details.
  */
-router.post("/", courseController.createCourse);
+router.post("/create",  isAuthenticated, courseController.createCourse);
 
 /**
  * Route to update a course by ID.
@@ -31,7 +32,7 @@ router.post("/", courseController.createCourse);
  * @param {string} id - The ID of the course to update.
  * Expects JSON body with updated course details.
  */
-router.put("/update/:id", courseController.updateCourse);
+router.put("/update/:_id",  isAuthenticated, courseController.updateCourse);
 
 /**
  * Route to delete a course by ID.
@@ -39,6 +40,6 @@ router.put("/update/:id", courseController.updateCourse);
  * Calls courseController.deleteCourse function.
  * @param {string} id - The ID of the course to delete.
  */
-router.delete("/delete/:id", courseController.deleteCourse);
+router.delete("/delete/:_id", isAuthenticated,  courseController.deleteCourse);
 
 module.exports = router;

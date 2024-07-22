@@ -37,16 +37,16 @@ module.exports = (mongoose) => {
     },
   });
 
-  CourseSchema.pre("find", function (next) {
-    this.populate({
-      path: "degree",
-      select: "name",
-    }).populate({
-      path: "certificate",
-      select: "name",
-    });
-    next();
-  });
+  // CourseSchema.pre("find", function (next) {
+  //   this.populate({
+  //     path: "degree",
+  //     select: "name",
+  //   }).populate({
+  //     path: "certificate",
+  //     select: "name",
+  //   });
+  //   next();
+  // });
 
   /**
    * Defines the Degree model.

@@ -15,13 +15,12 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-  "_id": "stdntf-admin",
-   "username": "frank_admin",
-   "email": "frank@example.com",
-   "password": "adminpassword",
-   "role": "admin"
+  "_id": "stdnte-instr",
+   "username": "eve_instructor",
+  "email": "eve@example.com",
+  "password": "password123",
+  "role": "instructor"
 }
-
 
 ###
 

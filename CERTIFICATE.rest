@@ -26,15 +26,30 @@ Content-Type: application/json
 ###
 
 ### Update a Certificate by ID
-PUT http://localhost:8080/certificates/
+PUT http://localhost:8080/certificates/update/669f07b7a250d0862c382a7b
 Content-Type: application/json
 
 {
-  "name": "Updated Business Fundamentals",
-  "description": "An updated description.",
-  "requirements": ["Complete updated core courses"],
-  "degreeId": "sftdev-byui",
-  "courses": ["course-bus101"]
+  "certificateCode": "CERT-101",
+    "name": "Certificate in Data Science",
+    "description": "This certificate focuses on data science skills and knowledge.",
+    "requirements": [
+      "Completion of introductory statistics",
+      "Completion of a programming course"
+    ],
+    "institution": {
+      "_id": "669eff8d460563e0975ce831",
+      "institutionCode": "BYU-I",
+      "name": "Brigham Young University-Idaho"
+    },
+    "coursesRequired": [
+      {
+        "_id": "669f07b6a250d0862c382a72",
+        "name": "Intro to Computer Science",
+        "code": "CS1010",
+        "description": "An introductory course on computer science."
+      }
+    ]
 }
 
 ###

@@ -15,7 +15,7 @@ router.get("/", courseController.getAll);
  * Calls courseController.getSingle function.
  * @param {string} id - The ID of the course to retrieve.
  */
-router.get("/:_id", courseController.getSingle);
+router.get("/:id", courseController.getSingle);
 
 /**
  * Route to create a new course.
@@ -23,7 +23,7 @@ router.get("/:_id", courseController.getSingle);
  * Calls courseController.createCourse function.
  * Expects JSON body with course details.
  */
-router.post("/create",  isAuthenticated, courseController.createCourse);
+router.post("/create", isAuthenticated, courseController.createCourse);
 
 /**
  * Route to update a course by ID.
@@ -32,7 +32,7 @@ router.post("/create",  isAuthenticated, courseController.createCourse);
  * @param {string} id - The ID of the course to update.
  * Expects JSON body with updated course details.
  */
-router.put("/update/:_id",  isAuthenticated, courseController.updateCourse);
+router.put("/update/:id", isAuthenticated, courseController.updateCourse);
 
 /**
  * Route to delete a course by ID.
@@ -40,6 +40,6 @@ router.put("/update/:_id",  isAuthenticated, courseController.updateCourse);
  * Calls courseController.deleteCourse function.
  * @param {string} id - The ID of the course to delete.
  */
-router.delete("/delete/:_id", isAuthenticated,  courseController.deleteCourse);
+router.delete("/delete/:id", isAuthenticated, courseController.deleteCourse);
 
 module.exports = router;

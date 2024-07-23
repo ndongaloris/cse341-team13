@@ -15,6 +15,7 @@ const user = require("./user.js");
 
 // Mounting swagger routes under /api-docs endpoint
 router.use("/", swagger, oauth);
+
 // Mounting degree routes under /degree endpoint
 router.use("/degrees", degreeRouter);
 

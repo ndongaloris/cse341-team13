@@ -11,12 +11,12 @@ GET http://localhost:8080/courses/course-bus101 HTTP/1.1
 
 ###
 
-#Update by ID
-POST http://localhost:8080/courses/ HTTP/1.1
+#CREATE
+POST http://localhost:8080/courses/create HTTP/1.1
 Content-Type: application/json
 
 {
-  "_id": "course-bus101",
+  "_id": "course-bus102",
   "name": "Introduction to Business",
   "code": "BUS101",
   "description": "An introductory course to business principles.",

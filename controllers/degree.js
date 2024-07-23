@@ -8,14 +8,27 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} res - The response object.
  */
 const getAll = async (req, res, next) => {
-  const result = await databaseModel.find();
+  try {
+    const result = await databaseModel.find()
+    .populate({
+      path: 'institutions',
+      select: 'name'
+    })
+    .populate({
+      path: 'certificatesRequired',
+      select: 'name'
+    })
+    .exec();
 
-  if (!result) {
-    return next(new AppErrorClass("No degrees found", 404));
+    if (!result) {
+      return next(new AppErrorClass("No degrees found", 404));
+    }
+
+    res.status(200).json(result);
+  }  catch (error) {
+    next(new AppErrorClass(error.message, 500));
   }
-
-  res.status(200).json(result);
-};
+  };
 
 /**
  * Retrieves a single degree from the database by ID.
@@ -23,14 +36,27 @@ const getAll = async (req, res, next) => {
  * @param {Object} res - The response object.
  */
 const getSingle = async (req, res, next) => {
-  const degreeId = req.params.id;
-  const result = await databaseModel.findOne({ _id: degreeId });
+  try {
+    const degreeId = req.params.id;
+  const result = await databaseModel.findOne({ _id: degreeId })
+  .populate({
+    path: 'institutions',
+    select: 'name' 
+  })
+  .populate({
+    path: 'certificates',
+    select: 'name' 
+  })
+  .exec();
 
   if (!result) {
     return next(new AppErrorClass("No degree found with that ID", 404));
   }
 
   res.status(200).json(result);
+} catch (error) {
+  next(new AppErrorClass(error.message, 500));
+}
 };
 
 /**
@@ -39,24 +65,24 @@ const getSingle = async (req, res, next) => {
  * @param {Object} res - The response object.
  */
 const createDegree = async (req, res, next) => {
-  const result = await databaseModel.create({
-    _id: req.body._id,
-    name: req.body.name,
-    institutions: req.body.institutions,
-    certificates: req.body.certificates,
-    type: req.body.type,
-    description: req.body.description,
-    potentialEmployment: req.body.potentialEmployment,
-    duration: req.body.duration,
-    creditsRequired: req.body.creditsRequired,
-    level: req.body.level,
-  });
+  try {
+    const result = await databaseModel.create({
+      degreeCode: req.body.degreeCode,
+      name: req.body.name,
+      institutions: req.body.institutions,
+      certificatesRequired: req.body.certificatesRequired,
+      type: req.body.type,
+      description: req.body.description,
+      potentialEmployment: req.body.potentialEmployment,
+      duration: req.body.duration,
+      creditsRequired: req.body.creditsRequired,
+      level: req.body.level,
+    });
 
-  if (!result) {
-    return next(new AppErrorClass("No degree found to create", 404));
+    res.status(201).json(result);
+  } catch (error) {
+    next(new AppErrorClass(error.message, 500));
   }
-
-  res.status(201).json(result);
 };
 
 /**
@@ -65,17 +91,22 @@ const createDegree = async (req, res, next) => {
  * @param {Object} res - The response object.
  */
 const updateDegree = async (req, res, next) => {
+  try {
   const degreeId = req.params.id;
   const newDoc = {};
-
+  if (req.body.degreeCode != undefined) newDoc.degreeCode = req.body.degreeCode;
   if (req.body.name != undefined) newDoc.name = req.body.name;
   if (req.body.institution !== undefined)
     newDoc.institution = req.body.institution;
+  if (req.body.certificatesRequired != undefined) newDoc.certificatesRequired = req.body.certificatesRequired;
   if (req.body.type !== undefined) newDoc.type = req.body.type;
   if (req.body.description !== undefined)
     newDoc.description = req.body.description;
   if (req.body.potentialEmployment !== undefined)
     newDoc.potentialEmployment = req.body.potentialEmployment;
+  if (req.body.duration != undefined) newDoc.duration = req.body.duration;
+  if (req.body.creditsRequired != undefined) newDoc.creditsRequired = req.body.creditsRequired;
+  if (req.body.level != undefined) newDoc.level = req.body.level;
 
   const result = await databaseModel.updateOne(
     { _id: degreeId },
@@ -86,7 +117,10 @@ const updateDegree = async (req, res, next) => {
     return next(new AppErrorClass("No degree found to update", 404));
   } else {
     res.status(200).json(result);
-  }
+  } 
+} catch (error) {
+  next(new AppErrorClass(error.message, 500));
+}
 };
 
 /**
@@ -95,14 +129,18 @@ const updateDegree = async (req, res, next) => {
  * @param {Object} res - The response object.
  */
 const deleteDegree = async (req, res, next) => {
-  const degreeId = req.params.id;
-  const result = await databaseModel.deleteOne({ _id: degreeId });
+  try {
+    const degreeId = req.params.id;
+    const result = await databaseModel.deleteOne({ _id: degreeId });
 
-  if (!result.deletedCount) {
-    throw new AppErrorClass("No degree found to delete", 404);
-  }
+    if (!result.deletedCount) {
+      throw new AppErrorClass("No degree found to delete", 404);
+    }
 
-  res.status(204).json({ message: "Degree deleted successfully", result });
+    res.status(204).json({ message: "Degree deleted successfully", result });
+} catch (error) {
+  next(new AppErrorClass(error.message, 500));
+}
 };
 
 // Exporting the CRUD functions

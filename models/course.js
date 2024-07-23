@@ -1,6 +1,5 @@
 module.exports = (mongoose) => {
   const CourseSchema = new mongoose.Schema({
-    _id: { type: String, required: true },
     name: {
       type: String,
       required: [true, "Course name is required"],
@@ -9,7 +8,6 @@ module.exports = (mongoose) => {
     code: {
       type: String,
       required: true,
-      minlength: [6, "Course code must be at least 6 characters long"],
     },
     description: {
       type: String,
@@ -21,14 +19,17 @@ module.exports = (mongoose) => {
       max: [4, "Maximum credits required is 4"],
       required: [true, "Credit number is required"],
     },
-    certificate: {
-      type: String,
-      ref: "Certificates",
-      required: true,
+    certificates: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Certificate",
+        },
+      ],
     },
     degree: {
-      type: String,
-      ref: "Degrees",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Degree",
     },
     courseType: {
       type: String,
@@ -51,7 +52,7 @@ module.exports = (mongoose) => {
   /**
    * Defines the Degree model.
    */
-  const Course = mongoose.model("Courses", CourseSchema);
+  const Course = mongoose.model("Course", CourseSchema);
 
   return Course;
 };

@@ -12,7 +12,7 @@ module.exports = (mongoose) => {
    */
   const InstitutionSchema = new mongoose.Schema(
     {
-      _id: {
+      institutionCode: {
         type: String,
         required: [true, "Institution ID is required"],
       },
@@ -56,8 +56,8 @@ module.exports = (mongoose) => {
         enum: ["Regional", "National", "International"],
         required: [true, "Institution accreditation type is required"],
       },
-      degrees: [{ _id: String, name: String, type: String }],
-      certificates: [{ _id: String, name: String, type: String }],
+      degrees: [{ type: mongoose.Schema.Types.ObjectId, ref: "Degree" }], 
+      certificates: [{ type: mongoose.Schema.Types.ObjectId, ref: "Certificate" }]
     },
     {
       timestamps: true,
@@ -91,7 +91,7 @@ module.exports = (mongoose) => {
    * Institution model creation.
    * @model Institution
    */
-  const Institution = mongoose.model("Institutions", InstitutionSchema); // Model name should be singular and capitalized
+  const Institution = mongoose.model("Institution", InstitutionSchema); // Model name should be singular and capitalized
 
   return Institution;
 };

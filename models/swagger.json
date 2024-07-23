@@ -5,7 +5,7 @@
     "title": "School's API",
     "description": "This is a school's API "
   },
-  "host": "cse341-team13.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
     "https",
@@ -100,7 +100,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "degreeCode": {
                   "example": "any"
                 },
                 "name": {
@@ -109,7 +109,7 @@
                 "institutions": {
                   "example": "any"
                 },
-                "certificates": {
+                "certificatesRequired": {
                   "example": "any"
                 },
                 "type": {
@@ -160,10 +160,16 @@
             "schema": {
               "type": "object",
               "properties": {
+                "degreeCode": {
+                  "example": "any"
+                },
                 "name": {
                   "example": "any"
                 },
                 "institution": {
+                  "example": "any"
+                },
+                "certificatesRequired": {
                   "example": "any"
                 },
                 "type": {
@@ -173,6 +179,15 @@
                   "example": "any"
                 },
                 "potentialEmployment": {
+                  "example": "any"
+                },
+                "duration": {
+                  "example": "any"
+                },
+                "creditsRequired": {
+                  "example": "any"
+                },
+                "level": {
                   "example": "any"
                 }
               }
@@ -248,7 +263,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "institutionCode": {
                   "example": "any"
                 },
                 "name": {
@@ -305,6 +320,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "institutionCode": {
+                  "example": "any"
+                },
                 "name": {
                   "example": "any"
                 },
@@ -314,7 +332,19 @@
                 "description": {
                   "example": "any"
                 },
-                "dateOfCreation": {
+                "contactInfo": {
+                  "example": "any"
+                },
+                "website": {
+                  "example": "any"
+                },
+                "accreditation": {
+                  "example": "any"
+                },
+                "degrees": {
+                  "example": "any"
+                },
+                "certificates": {
                   "example": "any"
                 }
               }
@@ -362,12 +392,12 @@
         }
       }
     },
-    "/courses/{_id}": {
+    "/courses/{id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -390,9 +420,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
-                  "example": "any"
-                },
                 "name": {
                   "example": "any"
                 },
@@ -405,7 +432,7 @@
                 "credit": {
                   "example": "any"
                 },
-                "certificate": {
+                "certificates": {
                   "example": "any"
                 },
                 "degree": {
@@ -428,12 +455,12 @@
         }
       }
     },
-    "/courses/update/{_id}": {
+    "/courses/update/{id}": {
       "put": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -456,7 +483,7 @@
                 "credit": {
                   "example": "any"
                 },
-                "certificate": {
+                "certificates": {
                   "example": "any"
                 },
                 "degree": {
@@ -479,12 +506,12 @@
         }
       }
     },
-    "/courses/delete/{_id}": {
+    "/courses/delete/{id}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -510,12 +537,12 @@
         }
       }
     },
-    "/certificates/{_id}": {
+    "/certificates/{id}": {
       "get": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -538,7 +565,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": {
+                "certificateCode": {
                   "example": "any"
                 },
                 "name": {
@@ -550,10 +577,10 @@
                 "requirements": {
                   "example": "any"
                 },
-                "degree": {
+                "institution": {
                   "example": "any"
                 },
-                "courses": {
+                "coursesRequired": {
                   "example": "any"
                 }
               }
@@ -570,12 +597,12 @@
         }
       }
     },
-    "/certificates/update/{_id}": {
+    "/certificates/update/{id}": {
       "put": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -586,6 +613,9 @@
             "schema": {
               "type": "object",
               "properties": {
+                "certificateCode": {
+                  "example": "any"
+                },
                 "name": {
                   "example": "any"
                 },
@@ -595,10 +625,10 @@
                 "requirements": {
                   "example": "any"
                 },
-                "degree": {
+                "institution": {
                   "example": "any"
                 },
-                "courses": {
+                "coursesRequired": {
                   "example": "any"
                 }
               }
@@ -615,12 +645,12 @@
         }
       }
     },
-    "/certificates/delete/{_id}": {
+    "/certificates/delete/{id}": {
       "delete": {
         "description": "",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"

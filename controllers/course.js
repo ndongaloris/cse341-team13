@@ -11,10 +11,16 @@ const getAll = errorHandler.catchAsync(async (req, res, next) => {
   //# swagger tags = ['Courses']
 
   try {
-    const result = await databaseModel
-      .find()
-      .populate("certificate", "name")
-      .populate("degree", "name");
+    const result = await databaseModel.find()
+    .populate({
+      path: 'certificates', 
+      select: 'name' 
+    })
+    .populate({
+      path: 'degree', 
+      select: 'name' 
+    })
+    .exec();
 
     if (!result || result.length === 0) {
       return next(new AppErrorClass("No courses found", 404));
@@ -36,12 +42,17 @@ const getSingle = errorHandler.catchAsync(async (req, res, next) => {
   //# swagger tags = ['Courses']
 
   try {
-    const courseId = req.params._id;
-    console.log(`Fetching course with ID: ${courseId}`); // Log course ID
-    const result = await databaseModel
-      .findOne({ _id: courseId })
-      .populate("certificate", "name")
-      .populate("degree", "name");
+    const courseId = req.params.id;
+    const result = await databaseModel.findOne({ _id: courseId })
+    .populate({
+      path: 'certificates', 
+      select: 'name' 
+    })
+    .populate({
+      path: 'degree', 
+      select: 'name' 
+    })
+    .exec();
 
     if (!result) {
       return next(new AppErrorClass("No course found with that ID", 404));
@@ -64,14 +75,13 @@ const createCourse = errorHandler.catchAsync(async (req, res, next) => {
 
   try {
     const result = await databaseModel.create({
-      _id: req.body._id,
       name: req.body.name,
       code: req.body.code,
       description: req.body.description,
       credit: req.body.credit,
-      certificate: req.body.certificate,
+      certificates: req.body.certificates,
       degree: req.body.degree,
-      courseType: req.body.courseType, // Fixed here
+      courseType: req.body.courseType 
     });
 
     if (!result) {
@@ -80,6 +90,7 @@ const createCourse = errorHandler.catchAsync(async (req, res, next) => {
 
     res.status(201).json(result);
   } catch (error) {
+    console.error(error); // Add logging
     next(error);
   }
 });
@@ -93,7 +104,7 @@ const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
   //# swagger tags = ['Courses']
 
   try {
-    const courseId = req.params._id;
+    const courseId = req.params.id;
     const newDoc = {};
 
     if (req.body.name != undefined) newDoc.name = req.body.name;
@@ -101,8 +112,7 @@ const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
     if (req.body.description !== undefined)
       newDoc.description = req.body.description;
     if (req.body.credit !== undefined) newDoc.credit = req.body.credit;
-    if (req.body.certificate !== undefined)
-      newDoc.certificate = req.body.certificate;
+    if (req.body.certificates !== undefined) newDoc.certificates = req.body.certificates;
     if (req.body.degree !== undefined) newDoc.degree = req.body.degree;
     if (req.body.courseType !== undefined)
       newDoc.courseType = req.body.courseType; // Fixed here
@@ -118,6 +128,7 @@ const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
 
     res.status(200).json(result);
   } catch (error) {
+    console.error(error); // Add logging
     next(error);
   }
 });
@@ -131,7 +142,7 @@ const deleteCourse = errorHandler.catchAsync(async (req, res, next) => {
   //# swagger tags = ['Courses']
 
   try {
-    const courseId = req.params._id;
+    const courseId = req.params.id;
     const result = await databaseModel.deleteOne({ _id: courseId });
 
     if (!result.deletedCount) {
@@ -140,6 +151,7 @@ const deleteCourse = errorHandler.catchAsync(async (req, res, next) => {
 
     res.status(204).json({ message: "Course deleted successfully" });
   } catch (error) {
+    console.error(error); // Add logging
     next(error);
   }
 });

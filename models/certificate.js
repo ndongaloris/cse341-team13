@@ -1,5 +1,8 @@
+const { institution } = require(".");
+
 module.exports = (mongoose) => {
   const CertificateSchema = new mongoose.Schema({
+    certificateCode: { type: String},
     name: {
       type: String,
       required: [true, "Certificate name is required"],
@@ -13,19 +16,21 @@ module.exports = (mongoose) => {
       type: [String],
       required: [true, "Requirements are required"],
     },
-    degree: {
+    institution: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Degrees",
-      // required: [true, "Degree type is required"],
+      ref: "Institution",
+      required: [true, "Institution is required"],
     },
-    courses: {
+    coursesRequired: {
       type: [
         {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Courses",
-          // required: [true, "Course is required"],
+          ref: "Course",
+          required: [true, "Course is required"]
+          
         },
       ],
+      
     },
   });
 
@@ -43,7 +48,7 @@ module.exports = (mongoose) => {
   /**
    * Defines the Certificate model.
    */
-  const Certificate = mongoose.model("Certificates", CertificateSchema);
+  const Certificate = mongoose.model("Certificate", CertificateSchema);
 
   return Certificate;
 };

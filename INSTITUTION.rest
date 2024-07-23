@@ -15,7 +15,7 @@ POST http://localhost:8080/institutions/create
 Content-Type: application/json
 
 {
-    "_id": "byui-pw",
+  "institutionCode": "BYU-I",
   "name": "BYU Pathway Worldwide",
   "address": "Salt Lake City, UT",
   "description": "An educational institution providing pathways to higher education.",
@@ -25,8 +25,8 @@ Content-Type: application/json
   },
   "website": "https://www.byupathway.org",
   "accreditation": "International",
-  "degrees": [{"_id": "sftdev-byui", "name": "Associate of Science in Business", "type": "Associate"}],
-  "certificates": [{"_id": "cert-business", "name": "Business Fundamentals", "type": "Core"}]
+  "degrees": ["Applied Business Management", "Applied Health"],
+  "certificates": ["Administrative Assistant", "Web Development"]
 }
 
 ###

@@ -1,7 +1,7 @@
 module.exports = (mongoose) => {
   const DegreeSchema = new mongoose.Schema(
     {
-      _id: {
+      degreeCode: {
         type: String,
         required: [true, "Degree ID is required"],
       },
@@ -11,15 +11,17 @@ module.exports = (mongoose) => {
         minlength: [3, "Degree name must be at least 3 characters long"],
       },
       institutions: {
-        type: String,
-        ref: "Institutions",
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Institution",
         required: [true, "Institution is required"],
       },
-      certificates: {
-        type: String,
-        ref: "Certificates",
-        required: [true, "Certificate is required"],
-      },
+      certificatesRequired: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Certificate",
+            required: [true, "Certificate is required"],
+          }
+        ],
       type: {
         type: String,
         required: [true, "Degree type is required"],
@@ -68,7 +70,7 @@ module.exports = (mongoose) => {
   /**
    * Defines the Degree model.
    */
-  const Degree = mongoose.model("Degrees", DegreeSchema);
+  const Degree = mongoose.model("Degree", DegreeSchema);
 
   return Degree;
 };

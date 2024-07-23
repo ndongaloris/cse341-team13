@@ -8,7 +8,6 @@ module.exports = (mongoose) => {
     code: {
       type: String,
       required: true,
-      minlength: [6, "Course code must be at least 6 characters long"],
     },
     description: {
       type: String,
@@ -26,8 +25,8 @@ module.exports = (mongoose) => {
       // required: true,
     },
     degree: {
-      type: String,
-      ref: "Degrees",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Degree",
     },
     courseType: {
       type: String,
@@ -50,7 +49,7 @@ module.exports = (mongoose) => {
   /**
    * Defines the Degree model.
    */
-  const Course = mongoose.model("Courses", CourseSchema);
+  const Course = mongoose.model("Course", CourseSchema);
 
   return Course;
 };

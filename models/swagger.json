@@ -257,13 +257,13 @@
         }
       }
     },
-    "/courses/{_id}": {
+    "/courses/{id}": {
       "get": {
         "tags": ["Courses"],
         "description": " Get a single course from the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -303,13 +303,13 @@
         }
       }
     },
-    "/courses/update/{_id}": {
+    "/courses/update/{id}": {
       "put": {
         "tags": ["Courses"],
         "description": " Update a single course in the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -333,13 +333,13 @@
         }
       }
     },
-    "/courses/delete/{_id}": {
+    "/courses/delete/{id}": {
       "delete": {
         "tags": ["Courses"],
         "description": " Delete a single course from the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -372,13 +372,13 @@
         }
       }
     },
-    "/certificates/{_id}": {
+    "/certificates/{id}": {
       "get": {
         "tags": ["Certificates"],
         "description": "Get a single certificate from the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -418,13 +418,13 @@
         }
       }
     },
-    "/certificates/update/{_id}": {
+    "/certificates/update/{id}": {
       "put": {
         "tags": ["Certificates"],
         "description": "Update a single certificate in the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -448,13 +448,13 @@
         }
       }
     },
-    "/certificates/delete/{_id}": {
+    "/certificates/delete/{id}": {
       "delete": {
         "tags": ["Certificates"],
         "description": "Delete a single certificate from the database",
         "parameters": [
           {
-            "name": "_id",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"

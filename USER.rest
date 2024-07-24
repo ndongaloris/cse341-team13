@@ -99,36 +99,36 @@ Content-Type: application/json
 #   }
 # ]
 
-[
-  {
-    "username": "peter_parker",
-    "email": "peter.parker@example.com",
-    "password": "spiderman123",
-    "role": "dev"
-  },
-  {
-    "username": "tony_stark",
-    "email": "tony.stark@example.com",
-    "password": "ironman123",
-    "role": "dev"
-  },
-  {
-    "username": "steve_rogers",
-    "email": "steve.rogers@example.com",
-    "password": "captain123",
-    "role": "student"
-  },
-  {
-    "username": "bruce_banner",
-    "email": "bruce.banner@example.com",
-    "password": "hulk123",
-    "role": "dev"
-  },
-  {
-    "username": "natasha_romanoff",
-    "email": "natasha.romanoff@example.com",
-    "password": "blackwidow123",
-    "role": "student"
-  }
-]
+# [
+#   {
+#     "username": "peter_parker",
+#     "email": "peter.parker@example.com",
+#     "password": "spiderman123",
+#     "role": "dev"
+#   },
+#   {
+#     "username": "tony_stark",
+#     "email": "tony.stark@example.com",
+#     "password": "ironman123",
+#     "role": "dev"
+#   },
+#   {
+#     "username": "steve_rogers",
+#     "email": "steve.rogers@example.com",
+#     "password": "captain123",
+#     "role": "student"
+#   },
+#   {
+#     "username": "bruce_banner",
+#     "email": "bruce.banner@example.com",
+#     "password": "hulk123",
+#     "role": "dev"
+#   },
+#   {
+#     "username": "natasha_romanoff",
+#     "email": "natasha.romanoff@example.com",
+#     "password": "blackwidow123",
+#     "role": "student"
+#   }
+# ]
 

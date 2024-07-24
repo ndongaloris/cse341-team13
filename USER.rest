@@ -1,3 +1,5 @@
+GET http://localhost:8080/login 
+
 ### Get All Users
 GET http://localhost:8080/users
 Content-Type: application/json
@@ -15,11 +17,10 @@ POST http://localhost:8080/users
 Content-Type: application/json
 
 {
-  "_id": "stdntf-admin",
-   "username": "frank_admin",
-   "email": "frank@example.com",
-   "password": "adminpassword",
-   "role": "admin"
+  "username": "shuri",
+  "email": "shuri@example.com",
+  "password": "blackpanther123",
+  "role": "dev"
 }
 
 
@@ -30,11 +31,12 @@ PUT http://localhost:8080/users/stdntf-admin
 Content-Type: application/json
 
 {
-  "username": "john_doe_updated",
-  "email": "john.doe.updated@example.com",
-  "role": "dev"
+   "_id": "stdntf-admin",
+   "username": "aliccia_Wonder",
+   "email": "alicia@example.com",
+   "password": "alicia101",
+   "role": "student"
 }
-
 ###
 
 ### Update My Profile (Non-Admin Users)
@@ -96,3 +98,37 @@ Content-Type: application/json
 #     "role": "student"
 #   }
 # ]
+
+[
+  {
+    "username": "peter_parker",
+    "email": "peter.parker@example.com",
+    "password": "spiderman123",
+    "role": "dev"
+  },
+  {
+    "username": "tony_stark",
+    "email": "tony.stark@example.com",
+    "password": "ironman123",
+    "role": "dev"
+  },
+  {
+    "username": "steve_rogers",
+    "email": "steve.rogers@example.com",
+    "password": "captain123",
+    "role": "student"
+  },
+  {
+    "username": "bruce_banner",
+    "email": "bruce.banner@example.com",
+    "password": "hulk123",
+    "role": "dev"
+  },
+  {
+    "username": "natasha_romanoff",
+    "email": "natasha.romanoff@example.com",
+    "password": "blackwidow123",
+    "role": "student"
+  }
+]
+

@@ -1,6 +1,5 @@
 module.exports = (mongoose) => {
   const CertificateSchema = new mongoose.Schema({
-    _id: { type: String, required: true },
     name: {
       type: String,
       required: [true, "Certificate name is required"],
@@ -17,14 +16,14 @@ module.exports = (mongoose) => {
     degree: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Degrees",
-      required: [true, "Degree type is required"],
+      // required: [true, "Degree type is required"],
     },
     courses: {
       type: [
         {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Courses",
-          required: [true, "Course is required"],
+          // required: [true, "Course is required"],
         },
       ],
     },

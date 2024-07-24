@@ -5,7 +5,7 @@ Content-Type: application/json
 ###
 
 ### Get Single Certificate by ID
-GET http://localhost:8080/certificates/cert-business
+GET http://localhost:8080/certificates/66a02fcfc58a72f6d4cd6351
 Content-Type: application/json
 
 ###

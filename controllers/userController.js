@@ -101,22 +101,17 @@ const updateUser = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   const userId = req.params.id;
-  // const newDoc = { ...req.body };
-  const newDoc = {
-    _id: req.body._id,
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    role: req.body.role
-  }
 
-  console.log("req.body", req.body);
-  console.log("newDoc", newDoc);
+  const newDoc = {
+    ...req.body,
+  };
 
   const result = await User.findByIdAndUpdate(userId, newDoc, {
     new: true,
     runValidators: true,
   });
+
+  console.log("result", result);
 
   if (!result) {
     return next(new AppErrorClass("No user found to update", 404));
@@ -140,7 +135,7 @@ const updateMe = async (req, res, next) => {
   //# swagger.tags = ['User']
 
   let feedback;
-  const userId = req.user.id;
+  const userId = req.params.id;
 
   if (["admin", "instructor"].includes(req.body.role)) {
     feedback = {

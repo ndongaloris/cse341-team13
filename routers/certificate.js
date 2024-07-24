@@ -16,7 +16,6 @@ router.get("/", certificateController.getAll);
  * @param {string} id - The ID of the certificate to retrieve.
  */
 router.get("/:id", certificateController.getSingle);
-router.get("/:id", certificateController.getSingle);
 
 /**
  * Route to create a new certificate.
@@ -24,6 +23,7 @@ router.get("/:id", certificateController.getSingle);
  * Calls certificateController.createcertificate function.
  * Expects JSON body with certificate details.
  */
+router.post("/create", certificateController.createCertificate);
 router.post("/create", certificateController.createCertificate);
 
 /**

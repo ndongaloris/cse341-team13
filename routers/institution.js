@@ -23,7 +23,7 @@ router.get("/:id", institutionController.getSingle);
  * * Calls institutionController.createInstitution function.
  * * Expects JSON body with institution details.
  */
-router.post("/create", isAuthenticated, institutionController.createInstitution);
+router.post("/create", institutionController.createInstitution);
 
 /**
  * * Route to update an institution by ID.

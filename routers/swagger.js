@@ -1,7 +1,7 @@
 // Require necessary modules
 const router = require("express").Router(); // Express router instance
 const swaggerUi = require("swagger-ui-express"); // Swagger UI middleware
-const swaggerDocument = require("../models/swagger.json"); // Path to Swagger JSON file
+const swaggerDocument = require("../models/swag.json"); // Path to Swagger JSON file
 
 // Serve Swagger UI at "/api-docs"
 router.use("/api-docs", swaggerUi.serve);

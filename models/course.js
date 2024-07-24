@@ -19,14 +19,17 @@ module.exports = (mongoose) => {
       max: [4, "Maximum credits required is 4"],
       required: [true, "Credit number is required"],
     },
-    certificate: {
-      type: String,
-      ref: "Certificates",
-      // required: true,
+    certificates: {
+      type: [
+        {
+          type: String,
+          required: true
+        }
+      ],
     },
     degree: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Degree",
+      type: String,
+      required: true
     },
     courseType: {
       type: String,
@@ -35,16 +38,6 @@ module.exports = (mongoose) => {
     },
   });
 
-  // CourseSchema.pre("find", function (next) {
-  //   this.populate({
-  //     path: "degree",
-  //     select: "name",
-  //   }).populate({
-  //     path: "certificate",
-  //     select: "name",
-  //   });
-  //   next();
-  // });
 
   /**
    * Defines the Degree model.

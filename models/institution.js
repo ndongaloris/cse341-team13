@@ -1,3 +1,4 @@
+
 const validator = require("validator");
 
 /**
@@ -56,8 +57,8 @@ module.exports = (mongoose) => {
         enum: ["Regional", "National", "International"],
         required: [true, "Institution accreditation type is required"],
       },
-      degrees: [{ type: mongoose.Schema.Types.ObjectId, ref: "Degree" }], 
-      certificates: [{ type: mongoose.Schema.Types.ObjectId, ref: "Certificate" }]
+      degrees: [{ type:String, required: true }], 
+      certificates: [{ type:String, required: true } ]
     },
     {
       timestamps: true,

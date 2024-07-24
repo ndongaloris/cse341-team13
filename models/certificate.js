@@ -1,4 +1,3 @@
-const { institution } = require(".");
 
 module.exports = (mongoose) => {
   const CertificateSchema = new mongoose.Schema({
@@ -17,33 +16,15 @@ module.exports = (mongoose) => {
       required: [true, "Requirements are required"],
     },
     institution: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Institution",
+      type: String,
       required: [true, "Institution is required"],
     },
-    coursesRequired: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Course",
+    coursesRequired: [{
+          type: String,
           required: [true, "Course is required"]
           
-        },
-      ],
-      
-    },
+        }],
   });
-
-  // CertificateSchema.pre(/^find/, function (next) {
-  //   this.populate({
-  //     path: "degree",
-  //     select: "name",
-  //   }).populate({
-  //     path: "courses",
-  //     select: "code name description",
-  //   });
-  //   next();
-  // });
 
   /**
    * Defines the Certificate model.

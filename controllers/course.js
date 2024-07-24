@@ -86,7 +86,7 @@ const createCourse = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 /**
  * Updates a course in the database by ID.

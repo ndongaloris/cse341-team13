@@ -24,7 +24,7 @@ router.get("/:id", certificateController.getSingle);
  * Calls certificateController.createcertificate function.
  * Expects JSON body with certificate details.
  */
-router.post("/create", certificateController.createCertificate);
+router.post("/create", isAuthenticated, certificateController.createCertificate);
 
 /**
  * Route to update a certificate by ID.

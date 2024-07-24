@@ -12,7 +12,6 @@ const logout = require("./logout.js");
 const passport = require("passport");
 const user = require("./user.js");
 
-
 // Mounting swagger routes under /api-docs endpoint
 router.use("/", swagger, oauth);
 
@@ -28,17 +27,18 @@ router.use("/courses", courseRouter);
 // Mounting institution routes under /institution endpoint
 router.use("/certificates", certificateRouter);
 
-router.use("/user", user);
+router.use("/users", user);
 
 router.get("/login", passport.authenticate("github"), login);
 router.get("/logout", logout);
 // Default route handler for the root endpoint
-router.get("/", (req, res) =>{
-    res.send(
-        req.session.user !== undefined ? `Logged in as ${req.session.user.displayName} <br><a href='/logout'>Log out</a><br><a href='/api-docs'>API Docs</a>` : "<a href='/login'>Login</a>"
-    )
-  }
-)
+router.get("/", (req, res) => {
+  res.send(
+    req.session.user !== undefined
+      ? `Logged in as ${req.session.user.displayName} <br><a href='/logout'>Log out</a><br><a href='/api-docs'>API Docs</a>`
+      : "<a href='/login'>Login</a>"
+  );
+});
 
 /**
  * * This route catches all undefined routes and forwards an error to the error handling middleware.

@@ -12,7 +12,6 @@
 const request = require("supertest"); //
 const mongoose = require("mongoose");
 const { app, server } = require("../server");
-const { certificate } = require("../models");
 
 //************************ TESTING THE degree MODEL *********************/
 
@@ -61,11 +60,11 @@ describe("Degree API", () => {
       res.body.data.forEach((degree) => {
         expect(degree).toMatchObject({
           name: expect.any(String),
-          institution: expect.any(String),
+          institutions: expect.any(String),
           certificates: expect.any(String),
           type: expect.any(String),
           description: expect.any(String),
-          potentialEmployment: expect.any([String]),
+          potentialEmployment: expect.any(Array),
           duration: expect.any(String),
           creditsRequired: expect.any(Number),
           level: expect.any(String),

@@ -1,6 +1,5 @@
 module.exports = (mongoose) => {
   const CourseSchema = new mongoose.Schema({
-    _id: { type: String, required: true },
     name: {
       type: String,
       required: [true, "Course name is required"],
@@ -24,7 +23,7 @@ module.exports = (mongoose) => {
     certificate: {
       type: String,
       ref: "Certificates",
-      required: true,
+      // required: true,
     },
     degree: {
       type: String,

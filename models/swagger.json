@@ -2,79 +2,35 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "School's API",
-    "description": "This is a school's API "
+    "title": "Pathway Worldwide API",
+    "description": "Web Services CSE341 course. Team 13 course project: Pathway Worldwide API - a vague replica of the Pathway Worldwide Program\n[Back to Homepage](http://cse341-team13.onrender.com/)\n[GitHub Repository](https://github.com/ndongaloris/cse341-team13)\n[Login](http://cse341-team13.onrender.com/login)\n[Logout](http://cse341-team13.onrender.com/logout)"
   },
+
   "host": "cse341-team13.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https",
-    "http"
-  ],
+  "schemes": ["https", "http"],
   "paths": {
-    "/login": {
+    "/degrees": {
       "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/": {
-      "get": {
-        "description": "",
+        "tags": ["Degrees"],
+        "description": " Get all degrees from the database",
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/github/loggedin": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/degrees/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Degree"
+              }
+            }
           }
         }
       }
     },
     "/degrees/{id}": {
       "get": {
-        "description": "",
+        "tags": ["Degrees"],
+        "description": " Get a single degree from the database",
         "parameters": [
           {
             "name": "id",
@@ -85,52 +41,25 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Degree"
+            }
           }
         }
       }
     },
     "/degrees/create": {
       "post": {
-        "description": "",
+        "tags": ["Degrees"],
+        "description": " Create a new degree in the database",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "institutions": {
-                  "example": "any"
-                },
-                "certificates": {
-                  "example": "any"
-                },
-                "type": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "potentialEmployment": {
-                  "example": "any"
-                },
-                "duration": {
-                  "example": "any"
-                },
-                "creditsRequired": {
-                  "example": "any"
-                },
-                "level": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Degree"
             }
           }
         ],
@@ -146,7 +75,8 @@
     },
     "/degrees/update/{id}": {
       "put": {
-        "description": "",
+        "tags": ["Degrees"],
+        "description": " Update a single degree in the database",
         "parameters": [
           {
             "name": "id",
@@ -159,23 +89,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "institution": {
-                  "example": "any"
-                },
-                "type": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "potentialEmployment": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Degree"
             }
           }
         ],
@@ -191,7 +105,8 @@
     },
     "/degrees/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": ["Degrees"],
+        "description": " Delete a single degree from the database",
         "parameters": [
           {
             "name": "id",
@@ -210,19 +125,27 @@
         }
       }
     },
-    "/institutions/": {
+    "/institutions": {
       "get": {
-        "description": "",
+        "tags": ["Institutions"],
+        "description": " Get all institutions from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Institution"
+              }
+            }
           }
         }
       }
     },
     "/institutions/{id}": {
       "get": {
-        "description": "",
+        "tags": ["Institutions"],
+        "description": " Get a single institution from the database",
         "parameters": [
           {
             "name": "id",
@@ -233,49 +156,25 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Institution"
+            }
           }
         }
       }
     },
     "/institutions/create": {
       "post": {
-        "description": "",
+        "tags": ["Institutions"],
+        "description": " Create a new institution in the database",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "contactInfo": {
-                  "example": "any"
-                },
-                "website": {
-                  "example": "any"
-                },
-                "accreditation": {
-                  "example": "any"
-                },
-                "degrees": {
-                  "example": "any"
-                },
-                "certificates": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Institution"
             }
           }
         ],
@@ -291,7 +190,8 @@
     },
     "/institutions/update/{id}": {
       "put": {
-        "description": "",
+        "tags": ["Institutions"],
+        "description": " Update a single institution in the database",
         "parameters": [
           {
             "name": "id",
@@ -304,20 +204,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "dateOfCreation": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Institution"
             }
           }
         ],
@@ -333,7 +220,8 @@
     },
     "/institutions/delete/{id}": {
       "delete": {
-        "description": "",
+        "tags": ["Institutions"],
+        "description": " Delete a single institution from the database",
         "parameters": [
           {
             "name": "id",
@@ -352,19 +240,27 @@
         }
       }
     },
-    "/courses/": {
+    "/courses": {
       "get": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": " Get all the courses from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
           }
         }
       }
     },
     "/courses/{_id}": {
       "get": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": " Get a single course from the database",
         "parameters": [
           {
             "name": "_id",
@@ -375,46 +271,25 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Course"
+            }
           }
         }
       }
     },
     "/courses/create": {
       "post": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": " Create a new course in the database",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "code": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "credit": {
-                  "example": "any"
-                },
-                "certificate": {
-                  "example": "any"
-                },
-                "degree": {
-                  "example": "any"
-                },
-                "courseType": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Course"
             }
           }
         ],
@@ -430,7 +305,8 @@
     },
     "/courses/update/{_id}": {
       "put": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": " Update a single course in the database",
         "parameters": [
           {
             "name": "_id",
@@ -443,29 +319,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "code": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "credit": {
-                  "example": "any"
-                },
-                "certificate": {
-                  "example": "any"
-                },
-                "degree": {
-                  "example": "any"
-                },
-                "courseType": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Course"
             }
           }
         ],
@@ -481,7 +335,8 @@
     },
     "/courses/delete/{_id}": {
       "delete": {
-        "description": "",
+        "tags": ["Courses"],
+        "description": " Delete a single course from the database",
         "parameters": [
           {
             "name": "_id",
@@ -500,19 +355,27 @@
         }
       }
     },
-    "/certificates/": {
+    "/certificates": {
       "get": {
-        "description": "",
+        "tags": ["Certificates"],
+        "description": "Get all the certificates from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Certificate"
+              }
+            }
           }
         }
       }
     },
     "/certificates/{_id}": {
       "get": {
-        "description": "",
+        "tags": ["Certificates"],
+        "description": "Get a single certificate from the database",
         "parameters": [
           {
             "name": "_id",
@@ -523,13 +386,17 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Certificate"
+            }
           }
         }
       }
     },
     "/certificates/create": {
       "post": {
+        "tags": ["Certificates"],
         "description": "",
         "parameters": [
           {
@@ -537,26 +404,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "requirements": {
-                  "example": "any"
-                },
-                "degree": {
-                  "example": "any"
-                },
-                "courses": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Certificate"
             }
           }
         ],
@@ -572,7 +420,8 @@
     },
     "/certificates/update/{_id}": {
       "put": {
-        "description": "",
+        "tags": ["Certificates"],
+        "description": "Update a single certificate in the database",
         "parameters": [
           {
             "name": "_id",
@@ -585,23 +434,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "requirements": {
-                  "example": "any"
-                },
-                "degree": {
-                  "example": "any"
-                },
-                "courses": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Certificate"
             }
           }
         ],
@@ -617,7 +450,8 @@
     },
     "/certificates/delete/{_id}": {
       "delete": {
-        "description": "",
+        "tags": ["Certificates"],
+        "description": "Delete a single certificate from the database",
         "parameters": [
           {
             "name": "_id",
@@ -636,12 +470,19 @@
         }
       }
     },
-    "/user/": {
+    "/users": {
       "get": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Get all users from the database",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -649,30 +490,15 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Create a new user in the database",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -686,9 +512,10 @@
         }
       }
     },
-    "/user/{id}": {
+    "/users/{id}": {
       "get": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Get a single user from the database",
         "parameters": [
           {
             "name": "id",
@@ -699,12 +526,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         }
       },
       "put": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Admin - Update a single user in the database",
         "parameters": [
           {
             "name": "id",
@@ -717,23 +548,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "_id": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -747,7 +562,8 @@
         }
       },
       "delete": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Delete a single user from the database",
         "parameters": [
           {
             "name": "id",
@@ -766,9 +582,10 @@
         }
       }
     },
-    "/user/me/{id}": {
+    "/users/me/{id}": {
       "put": {
-        "description": "",
+        "tags": ["User"],
+        "description": "Regular user - Update a single user in the database",
         "parameters": [
           {
             "name": "id",
@@ -781,11 +598,7 @@
             "in": "body",
             "schema": {
               "type": "object",
-              "properties": {
-                "role": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -796,6 +609,216 @@
           "400": {
             "description": "Bad Request"
           }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "john_doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "john.doe@example.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password123"
+        },
+        "role": {
+          "type": "string",
+          "example": "student"
+        }
+      }
+    },
+    "Degree": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Computer Science"
+        },
+        "institutions": {
+          "type": "string",
+          "example": "BYU"
+        },
+        "certificates": {
+          "type": "string",
+          "example": "Certificate in Software Development"
+        },
+        "type": {
+          "type": "string",
+          "example": "Bachelor"
+        },
+        "description": {
+          "type": "string",
+          "example": "A degree in computer science."
+        },
+        "potentialEmployment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": ["Software Engineer", "System Analyst"]
+        },
+        "duration": {
+          "type": "string",
+          "example": "4 years"
+        },
+        "creditsRequired": {
+          "type": "number",
+          "example": 120
+        },
+        "level": {
+          "type": "string",
+          "example": "Undergraduate"
+        }
+      }
+    },
+    "Institution": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "BYU Pathway Worldwide"
+        },
+        "address": {
+          "type": "string",
+          "example": "Salt Lake City, UT"
+        },
+        "description": {
+          "type": "string",
+          "example": "An educational institution providing pathways to higher education."
+        },
+        "contactInfo": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "info@byupathway.org"
+            },
+            "phoneNumber": {
+              "type": "string",
+              "example": "1234567890"
+            }
+          }
+        },
+        "website": {
+          "type": "string",
+          "example": "https://www.byupathway.org"
+        },
+        "accreditation": {
+          "type": "string",
+          "example": "International"
+        },
+        "degrees": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "degree1"
+              },
+              "name": {
+                "type": "string",
+                "example": "Computer Science"
+              },
+              "type": {
+                "type": "string",
+                "example": "Bachelor"
+              }
+            }
+          }
+        },
+        "certificates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "cert1"
+              },
+              "name": {
+                "type": "string",
+                "example": "Certificate in Software Development"
+              },
+              "type": {
+                "type": "string",
+                "example": "Software Development"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Course": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Introduction to Programming"
+        },
+        "code": {
+          "type": "string",
+          "example": "CS101"
+        },
+        "description": {
+          "type": "string",
+          "example": "A beginner course in programming."
+        },
+        "credit": {
+          "type": "number",
+          "example": 3
+        },
+        "certificate": {
+          "type": "string",
+          "example": "Certificate in Software Development"
+        },
+        "degree": {
+          "type": "string",
+          "example": "Computer Science"
+        },
+        "courseType": {
+          "type": "string",
+          "enum": ["Core", "General Education", "Religion"],
+          "example": "Core"
+        }
+      }
+    },
+    "Certificate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Certificate in Software Development"
+        },
+        "description": {
+          "type": "string",
+          "example": "A certificate in software development."
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": ["Complete 3 core courses", "Complete 1 project"]
+        },
+        "degree": {
+          "type": "string",
+          "example": "Computer Science"
+        },
+        "courses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": ["CS101", "CS102", "CS103"]
         }
       }
     }

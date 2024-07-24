@@ -2,7 +2,6 @@ const router = require("express").Router();
 const certificateController = require("../controllers/certificate");
 const { isAuthenticated } = require("../middleware/authenticate");
 
-
 /**
  * Route to get all certificates.
  * GET /
@@ -24,7 +23,7 @@ router.get("/:id", certificateController.getSingle);
  * Calls certificateController.createcertificate function.
  * Expects JSON body with certificate details.
  */
-router.post("/create", isAuthenticated, certificateController.createCertificate);
+router.post("/create", certificateController.createCertificate);
 
 /**
  * Route to update a certificate by ID.

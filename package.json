@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "swagger": "node ./swagger.js"
+    "swagger": "node ./swagger.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,8 +16,10 @@
   "author": "Loris Jared Ndonga, Fortunate Kwenda, Samuel Turay, Gilles Mambou",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

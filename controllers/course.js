@@ -10,7 +10,9 @@ const AppErrorClass = require("../utils/appErrorClass");
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getAll = async (req, res, next) => {
+const getAll = errorHandler.catchAsync(async (req, res, next) => {
+  //# swagger tags = ['Courses']
+
   try {
     const result = await databaseModel.find();
     
@@ -24,14 +26,16 @@ const getAll = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 /**
  * Retrieves a single course from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const getSingle = async (req, res, next) => {
+const getSingle = errorHandler.catchAsync(async (req, res, next) => {
+  //# swagger tags = ['Courses']
+
   try {
     const courseId = req.params.id;
     const result = await databaseModel.findOne({ _id: courseId });
@@ -46,7 +50,7 @@ const getSingle = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 /**
  * Creates a new course in the database.
@@ -82,21 +86,24 @@ const createCourse = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 /**
  * Updates a course in the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const updateCourse = async (req, res, next) => {
+const updateCourse = errorHandler.catchAsync(async (req, res, next) => {
+  //# swagger tags = ['Courses']
+
   try {
     const courseId = req.params.id;
     const newDoc = {};
 
     if (req.body.name != undefined) newDoc.name = req.body.name;
     if (req.body.code !== undefined) newDoc.code = req.body.code;
-    if (req.body.description !== undefined) newDoc.description = req.body.description;
+    if (req.body.description !== undefined)
+      newDoc.description = req.body.description;
     if (req.body.credit !== undefined) newDoc.credit = req.body.credit;
     if (req.body.certificates !== undefined) newDoc.certificates = req.body.certificates;
     if (req.body.degree !== undefined) newDoc.degree = req.body.degree;
@@ -126,14 +133,16 @@ const updateCourse = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 /**
  * Deletes a course from the database by ID.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  */
-const deleteCourse = async (req, res, next) => {
+const deleteCourse = errorHandler.catchAsync(async (req, res, next) => {
+  //# swagger tags = ['Courses']
+
   try {
     const courseId = req.params.id;
     const result = await databaseModel.deleteOne({ _id: courseId });
@@ -147,7 +156,7 @@ const deleteCourse = async (req, res, next) => {
     console.error(error); // Add logging
     next(error);
   }
-};
+});
 
 // Exporting the CRUD functions
 module.exports = {

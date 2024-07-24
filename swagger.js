@@ -23,7 +23,7 @@ const doc = {
     };
 
 // Output file where the generated Swagger JSON will be saved
-const outputFile = "./models/swagger.json";
+const outputFile = "./models/swag.json";
 
 // Array of endpoint files to scan for generating Swagger documentation
 const endpointsFiles = ["./routers/index.js"]; 

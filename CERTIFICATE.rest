@@ -14,14 +14,6 @@ Content-Type: application/json
 POST http://localhost:8080/certificates/create
 Content-Type: application/json
 
-{
-    "_id": "cert-info-tech",
-    "name": "Information Technology",
-    "description": "A certificate in information technology.",
-    "requirements": ["Complete all core courses", "Complete a capstone project"],
-    "degree": "sftdev-byui",
-    "courses": ["IT242", "course-cs102", "course-cs103"]
-}
 
 ###
 

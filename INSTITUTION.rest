@@ -15,19 +15,28 @@ POST http://localhost:8080/institutions/create
 Content-Type: application/json
 
 {
-  "institutionCode": "BYU-I",
-  "name": "BYU Pathway Worldwide",
-  "address": "Salt Lake City, UT",
-  "description": "An educational institution providing pathways to higher education.",
-  "contactInfo": {
-    "email": "info@byupathway.org",
-    "phoneNumber": "1234567890"
-  },
-  "website": "https://www.byupathway.org",
-  "accreditation": "International",
-  "degrees": ["Applied Business Management", "Applied Health"],
-  "certificates": ["Administrative Assistant", "Web Development"]
-}
+        "name": "Brigham Young University-Idaho",
+        "abbreviation": "BYU-I",
+        "location": "Rexburg, Idaho",
+        "address": "Salt Lake City, UT",
+        "website": "https://www.byui.edu",
+        "description": "An educational institution providing pathways to higher education."
+      }
+
+# {
+#   "institutionCode": "BYU-I",
+#   "name": "BYU Pathway Worldwide",
+#   "address": "Salt Lake City, UT",
+#   "description": "An educational institution providing pathways to higher education.",
+#   "contactInfo": {
+#     "email": "info@byupathway.org",
+#     "phoneNumber": "1234567890"
+#   },
+#   "website": "https://www.byupathway.org",
+#   "accreditation": "International",
+#   "degrees": ["Applied Business Management", "Applied Health"],
+#   "certificates": ["Administrative Assistant", "Web Development"]
+# }
 
 ###
 

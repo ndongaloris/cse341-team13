@@ -32,11 +32,13 @@ router.get("/login", passport.authenticate("github"), login);
 router.get("/logout", logout);
 // Default route handler for the root endpoint
 router.get("/", (req, res) => {
-  res.send(
-    req.session.user !== undefined
-      ? `Logged in as ${req.session.user.displayName} <br><a href='/logout'>Log out</a><br><a href='/api-docs'>API Docs</a>`
-      : "<a href='/login'>Login</a>"
-  );
+  res.render("index");
+
+  // res.send(
+  //   req.session.user !== undefined
+  //     ? `Logged in as ${req.session.user.displayName} <br><a href='/logout'>Log out</a><br><a href='/api-docs'>API Docs</a>`
+  //     : "<a href='/login'>Login</a>"
+  // );
 });
 
 /**

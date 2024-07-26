@@ -1,3 +1,4 @@
+const path = require("path");
 require("dotenv").config(); // Loads environment variables from a .env file into process.env
 require("./database/connect"); // Connects to MongoDB
 const passport = require("passport");
@@ -9,6 +10,12 @@ const cors = require("cors");
 const router = require("./routers/index"); // Imports the main router containing all routes
 const bodyParser = require("body-parser"); // Import body-parser (if not using built-in)
 require("dotenv").config();
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+app.use(express.static(path.join(__dirname, "public")));
+
 // Middleware setup
 app
   .use(cors())

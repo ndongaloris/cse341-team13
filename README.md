@@ -1,5 +1,7 @@
 # BYU PathwayWorldwide API
 
+Click on this link 👉🏽 [BYU PathwayWorldwide API](https://cse341-team13.onrender.com) to access the API
+
 This project is an API for replicating BYU PathwayWorldwide, including resources/collections such as degrees, institutions, certificates, and courses. It also includes user management with roles like students, developers, instructors, and admins.
 
 ## Table of Contents

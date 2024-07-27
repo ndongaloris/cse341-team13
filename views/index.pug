@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  section.hero
+    div
+      h1 PathwayWorldwide-API 
+      h2 A Comprehensive API Platform
+    p Welcome to Team 13 API platform of Web Service CSE341 Spring Semester of 2024 . This is  our BYU Pathway Worldwide API Replica, a comprehensive and collaborative project developed by a dedicated team of four for our semester grading. This API is designed to mimic the functionalities of the BYU Pathway Worldwide platform, providing a robust framework for managing educational resources. Our API features multiple collections, including degrees, institutions, certificates, courses, and users. Key functionalities include creating and managing degree programs, institutions, and their associated certificates and courses, as well as user authentication with role-based access control. The platform supports seamless integration and efficient data management, making it an excellent tool for academic exploration and development. Dive into our detailed documentation, explore the various endpoints, and experience how we've brought this educational API to life. Join us in this learning journey and see how technology can enhance educational management and accessibility.
+    .cta-div
+      p 
+       span Ready to get started? 
+       | Sign up now using your GitHub or Google account to unlock the full potential of our BYU Pathway Worldwide API Replica. By signing up, you'll gain access to powerful features that allow you to create, update, and manage degrees, institutions, certificates, and courses seamlessly. Click the buttons below to sign up 
+      .cta
+        a.button.google(href="/auth/google")
+            i.fab.fa-google
+            |  Login with Google
+        a.button.gitHub(href="/login")
+            i.fab.fa-github
+            |  Login with GitHub
+
+  section.contributors
+    .intro-box
+      h2 
+        | Meet the Team 
+        i.fas.fa-users
+      p Meet the team behind the BYU Pathway Worldwide API Replica. Our group of four developers collaborated to create this project, showcasing our skills and teamwork. Connect with each member on LinkedIn or GitHub and explore the dedication and effort that went into this API.
+    .contributors-box
+      .contributor 
+        .img-box
+          img(src="https://avatars.githubusercontent.com/u/116970822?v=4" alt="Photo of Fortunate" width="460" height="460")
+        h3 Fortunate
+        .social-links-box
+          a.button.linkedIn(href="https://www.linkedin.com/in/contributor1" target="_blank")
+            i.fab.fa-linkedin
+            | LinkedIn
+          a.button.gitHub(href="https://github.com/Fortue3" target="_blank")
+            i.fab.fa-github
+            | GitHub
+      .contributor
+        .img-box
+          img(src="https://avatars.githubusercontent.com/u/130836683?v=4" alt="Photo of Loris" width="460" height="460")
+        h3 Loris Jared Ndonga
+        .social-links-box
+          a.button.linkedIn(href="https://www.linkedin.com/in/contributor1" target="_blank")
+            i.fab.fa-linkedin
+            | LinkedIn
+          a.button.gitHub(href="https://github.com/ndongaloris" target="_blank")
+            i.fab.fa-github
+            | GitHub
+      .contributor
+        .img-box
+          img(src="https://avatars.githubusercontent.com/u/16946862?v=4" alt="Photo of Elie" width="460" height="460")
+        h3 Elie Gilles Mambou
+        .social-links-box
+          a.button.linkedIn(href="https://www.linkedin.com/in/contributor1" target="_blank")
+            i.fab.fa-linkedin
+            | LinkedIn
+          a.button.gitHub(href="https://github.com/Mambou-Gilles" target="_blank")
+            i.fab.fa-github
+            | GitHub
+      .contributor
+        .img-box
+          img(src="https://avatars.githubusercontent.com/u/96601470?v=4" alt="Photo of Samuel" width="460" height="460")
+        h3 Samuel Fogbawa Turay
+        .social-links-box
+          a.button.linkedIn(href="https://www.linkedin.com/in/contributor1" target="_blank")
+            i.fab.fa-linkedin
+            | LinkedIn
+          a.button.gitHub(href="https://github.com/Koigor97" target="_blank")
+            i.fab.fa-github
+            | GitHub
+      

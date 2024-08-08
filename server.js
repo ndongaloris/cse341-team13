@@ -3,6 +3,7 @@ require("dotenv").config(); // Loads environment variables from a .env file into
 require("./database/connect"); // Connects to MongoDB
 const passport = require("passport");
 const gitHubStrategy = require("passport-github2").Strategy;
+const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const session = require("express-session");
 const express = require("express");
 const app = express();
@@ -46,6 +47,17 @@ passport.use(
     }
   )
 );
+
+
+passport.use(new GoogleStrategy({
+    clientID:     process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+      return done(null, profile);
+  }
+));
 
 passport.serializeUser(function (user, done) {
   done(null, user);

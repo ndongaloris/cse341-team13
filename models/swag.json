@@ -6,7 +6,7 @@
     "description": "Web Services CSE341 course. Team 13 course project: Pathway Worldwide API - a vague replica of the Pathway Worldwide Program\n[Back to Homepage](http://cse341-team13.onrender.com/)\n[GitHub Repository](https://github.com/ndongaloris/cse341-team13)\n[Login](http://cse341-team13.onrender.com/login)\n[Logout](http://cse341-team13.onrender.com/logout)"
   },
 
-  "host": "cse341-team13.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": ["https", "http"],
   "paths": {

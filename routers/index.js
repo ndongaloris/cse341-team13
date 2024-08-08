@@ -30,6 +30,7 @@ router.use("/certificates", certificateRouter);
 router.use("/users", user);
 
 router.get("/login", passport.authenticate("github"), login);
+// router.get("/googlelogin", passport.authenticate("google"), login);
 router.get("/logout", logout);
 // Default route handler for the root endpoint
 router.get("/", (req, res) => {

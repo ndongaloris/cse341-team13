@@ -2,7 +2,7 @@ const router = require("express").Router();
 const passport = require("passport");
 
 router.get(
-  "/auth/github/loggedin",
+  "/login",
   passport.authenticate("github", {
     failureRedirect: "/",
     session: false,
@@ -13,5 +13,18 @@ router.get(
     res.redirect("/api-docs");
   }
 );
+
+router.get('/auth/google',
+  passport.authenticate('google', { 
+      scope: [ 'email', 'profile' ] , 
+      failureRedirect: '/' , 
+      session: false
+    })
+);
+
+router.get('/auth/google/loggedin', (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/api-docs');
+});
 
 module.exports = router;
